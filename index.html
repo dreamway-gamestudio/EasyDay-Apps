@@ -300,19 +300,20 @@
     }
     .hero-image-wrapper {
       position: relative;
-      overflow: hidden;
-      max-width: 480px;
+      max-width: 260px;
       margin: 0 auto;
     }
     .hero-image-wrapper img {
       width: 100%;
       height: auto;
       display: block;
-      border-radius: 28px;
-      box-shadow:
-        0 20px 60px rgba(0,0,0,0.12),
-        0 8px 24px rgba(0,0,0,0.08),
-        0 0 0 1px rgba(0,0,0,0.04);
+      border-radius: 0;
+      box-shadow: none;
+      animation: fadeUp 1s 0.5s ease both, floatUpDown 4s 1.5s ease-in-out infinite;
+    }
+    @keyframes floatUpDown {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
     }
 
     /* Floating decorative leaves */
