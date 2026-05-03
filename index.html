@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="assets/ico.ico">
   <title>EasyDay — App Studio</title>
   <meta name="description" content="EasyDay App Studio — We craft beautiful, intuitive mobile apps for Android & iOS. Calorie Tracker — track calories, eat better, get results.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -90,18 +91,12 @@
       color: var(--text);
       letter-spacing: -0.03em;
     }
-    .nav-logo .logo-placeholder {
-      width: 42px; height: 42px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--green) 0%, var(--green-light) 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.85rem;
-      font-weight: 800;
-      color: #fff;
+    .nav-logo .logo-img {
+      width: 42px;
+      height: 42px;
+      border-radius: 0;
       flex-shrink: 0;
-      box-shadow: 0 2px 8px var(--green-glow);
+      object-fit: contain;
     }
     .nav-links {
       display: flex;
@@ -576,16 +571,11 @@
       align-items: center;
       gap: 12px;
     }
-    .footer-left .logo-placeholder {
-      width: 32px; height: 32px;
-      border-radius: 8px;
-      background: linear-gradient(135deg, var(--green), var(--green-light));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.65rem;
-      font-weight: 800;
-      color: #fff;
+    .footer-left .logo-img {
+      width: 32px;
+      height: 32px;
+      border-radius: 0;
+      object-fit: contain;
     }
     .footer-copy {
       font-size: 0.82rem;
@@ -664,9 +654,8 @@
   <nav id="navbar">
     <div class="container">
       <a href="#" class="nav-logo">
-        <!-- LOGO: replace placeholder with <img src="logo.png" alt="EasyDay" style="width:42px;height:42px;border-radius:12px"> -->
-        <div class="logo-placeholder">ED</div>
-        EasyDay
+        <img src="assets/Icon.png" alt="EasyDay Apps" class="logo-img">
+        EasyDay Apps
       </a>
       <div class="nav-links" id="navLinks">
         <a href="#about">About</a>
@@ -832,7 +821,7 @@
   <footer>
     <div class="container">
       <div class="footer-left">
-        <div class="logo-placeholder">ED</div>
+        <img src="assets/Icon.png" alt="EasyDay Apps" class="logo-img">
         <span class="footer-copy">&copy; 2026 EasyDay App Studio. All rights reserved.</span>
       </div>
       <div class="footer-links">
