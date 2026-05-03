@@ -4,30 +4,38 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EasyDay — App Studio</title>
-  <meta name="description" content="EasyDay App Studio — We craft beautiful, intuitive mobile apps for Android & iOS.">
+  <meta name="description" content="EasyDay App Studio — We craft beautiful, intuitive mobile apps for Android & iOS. Calorie Tracker — track calories, eat better, get results.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    /* ========== RESET & VARIABLES ========== */
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --bg: #050508;
-      --bg-card: #0d0d14;
-      --bg-card-hover: #12121c;
-      --text: #e8e8f0;
-      --text-dim: #8888a0;
-      --accent: #6C5CE7;
-      --accent-light: #a29bfe;
-      --accent-glow: rgba(108, 92, 231, 0.35);
-      --green: #00b894;
-      --green-glow: rgba(0, 184, 148, 0.25);
-      --orange: #e17055;
+      --bg: #f7faf7;
+      --bg-white: #ffffff;
+      --bg-soft: #eef5ee;
+      --bg-card: #ffffff;
+      --text: #1a2e1a;
+      --text-secondary: #4a6a4a;
+      --text-muted: #7a957a;
+      --green: #2e7d32;
+      --green-light: #4caf50;
+      --green-pale: #e8f5e9;
+      --green-glow: rgba(46, 125, 50, 0.15);
+      --green-dark: #1b5e20;
+      --accent: #43a047;
+      --border: rgba(46, 125, 50, 0.1);
+      --border-light: rgba(0,0,0,0.06);
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 20px rgba(0,0,0,0.06);
+      --shadow-lg: 0 12px 48px rgba(0,0,0,0.08);
+      --shadow-xl: 0 24px 64px rgba(0,0,0,0.1);
       --radius: 20px;
       --radius-sm: 12px;
-      --font-display: 'Sora', sans-serif;
-      --font-body: 'Outfit', sans-serif;
+      --radius-xs: 8px;
+      --font-display: 'Plus Jakarta Sans', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
     }
 
     html { scroll-behavior: smooth; }
@@ -44,65 +52,11 @@
     img { max-width: 100%; display: block; }
     button { font-family: inherit; cursor: pointer; border: none; }
 
-    /* ========== NOISE OVERLAY ========== */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      pointer-events: none;
-      opacity: 0.025;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-      background-size: 256px 256px;
-    }
-
-    /* ========== AMBIENT BACKGROUND BLOBS ========== */
-    .ambient {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      overflow: hidden;
-    }
-    .ambient .blob {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(120px);
-      opacity: 0.18;
-      animation: blobFloat 20s ease-in-out infinite alternate;
-    }
-    .ambient .blob:nth-child(1) {
-      width: 600px; height: 600px;
-      background: var(--accent);
-      top: -10%; left: -10%;
-    }
-    .ambient .blob:nth-child(2) {
-      width: 500px; height: 500px;
-      background: var(--green);
-      bottom: -10%; right: -10%;
-      animation-delay: -7s;
-    }
-    .ambient .blob:nth-child(3) {
-      width: 350px; height: 350px;
-      background: var(--orange);
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      animation-delay: -14s;
-      opacity: 0.08;
-    }
-    @keyframes blobFloat {
-      0% { transform: translate(0, 0) scale(1); }
-      50% { transform: translate(40px, -30px) scale(1.08); }
-      100% { transform: translate(-20px, 20px) scale(0.95); }
-    }
-
-    /* ========== LAYOUT ========== */
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 24px;
       position: relative;
-      z-index: 1;
     }
 
     /* ========== NAV ========== */
@@ -110,14 +64,17 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      padding: 18px 0;
-      background: rgba(5,5,8,0.7);
+      padding: 16px 0;
+      background: rgba(247, 250, 247, 0.85);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-      transition: padding 0.3s;
+      border-bottom: 1px solid var(--border-light);
+      transition: padding 0.3s, box-shadow 0.3s;
     }
-    nav.scrolled { padding: 12px 0; }
+    nav.scrolled {
+      padding: 10px 0;
+      box-shadow: var(--shadow-sm);
+    }
     nav .container {
       display: flex;
       align-items: center;
@@ -126,43 +83,35 @@
     .nav-logo {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 1.3rem;
-      letter-spacing: -0.02em;
+      font-weight: 800;
+      font-size: 1.35rem;
+      color: var(--text);
+      letter-spacing: -0.03em;
     }
     .nav-logo .logo-placeholder {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      background: linear-gradient(135deg, var(--accent), var(--green));
+      width: 42px; height: 42px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--green) 0%, var(--green-light) 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       font-weight: 800;
       color: #fff;
       flex-shrink: 0;
-    }
-    /* Replace .logo-placeholder with your logo:
-       <img src="logo.png" alt="EasyDay" class="logo-img"> */
-    .logo-img {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      object-fit: cover;
-      display: none; /* unhide when logo is added */
+      box-shadow: 0 2px 8px var(--green-glow);
     }
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 32px;
+      gap: 36px;
     }
     .nav-links a {
       font-size: 0.92rem;
       font-weight: 500;
-      color: var(--text-dim);
+      color: var(--text-secondary);
       transition: color 0.25s;
       position: relative;
     }
@@ -171,27 +120,27 @@
       position: absolute;
       bottom: -4px; left: 0;
       width: 0; height: 2px;
-      background: var(--accent-light);
+      background: var(--green);
       border-radius: 2px;
       transition: width 0.3s;
     }
-    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover { color: var(--green); }
     .nav-links a:hover::after { width: 100%; }
     .nav-contact {
-      background: var(--accent);
-      color: #fff;
-      padding: 10px 22px;
+      background: var(--green);
+      color: #fff !important;
+      padding: 10px 24px;
       border-radius: 50px;
       font-size: 0.88rem;
       font-weight: 600;
       transition: transform 0.2s, box-shadow 0.3s;
     }
+    .nav-contact::after { display: none !important; }
     .nav-contact:hover {
       transform: translateY(-1px);
-      box-shadow: 0 6px 24px var(--accent-glow);
+      box-shadow: 0 6px 20px var(--green-glow);
+      color: #fff !important;
     }
-
-    /* Mobile nav */
     .nav-toggle {
       display: none;
       flex-direction: column;
@@ -211,294 +160,216 @@
       min-height: 100vh;
       display: flex;
       align-items: center;
-      padding: 140px 0 100px;
+      padding: 120px 0 80px;
       position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(76,175,80,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -100px; left: -150px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(46,125,50,0.06) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
     }
     .hero .container {
       display: flex;
       align-items: center;
-      gap: 80px;
+      gap: 60px;
     }
     .hero-text {
       flex: 1;
-      max-width: 580px;
+      max-width: 540px;
+      position: relative;
+      z-index: 2;
     }
     .hero-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(108,92,231,0.12);
-      border: 1px solid rgba(108,92,231,0.2);
+      background: var(--green-pale);
+      border: 1px solid rgba(46,125,50,0.15);
       border-radius: 50px;
-      padding: 6px 16px;
+      padding: 8px 18px;
       font-size: 0.82rem;
-      font-weight: 500;
-      color: var(--accent-light);
+      font-weight: 600;
+      color: var(--green);
       margin-bottom: 28px;
       animation: fadeUp 0.8s ease both;
     }
     .hero-badge .dot {
-      width: 6px; height: 6px;
+      width: 7px; height: 7px;
       border-radius: 50%;
-      background: var(--green);
+      background: var(--green-light);
       animation: pulse 2s ease-in-out infinite;
     }
     @keyframes pulse {
       0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(1.4); }
+      50% { opacity: 0.5; transform: scale(1.5); }
     }
     .hero h1 {
       font-family: var(--font-display);
-      font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
       font-weight: 800;
       line-height: 1.1;
       letter-spacing: -0.03em;
-      margin-bottom: 24px;
+      color: var(--text);
+      margin-bottom: 22px;
       animation: fadeUp 0.8s 0.1s ease both;
     }
-    .hero h1 .gradient {
-      background: linear-gradient(135deg, var(--accent-light) 0%, var(--green) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+    .hero h1 .highlight {
+      color: var(--green);
+      position: relative;
+    }
+    .hero h1 .highlight::after {
+      content: '';
+      position: absolute;
+      bottom: 2px; left: 0;
+      width: 100%; height: 8px;
+      background: rgba(76,175,80,0.15);
+      border-radius: 4px;
+      z-index: -1;
     }
     .hero p {
-      font-size: 1.15rem;
-      line-height: 1.7;
-      color: var(--text-dim);
-      margin-bottom: 40px;
-      max-width: 480px;
+      font-size: 1.12rem;
+      line-height: 1.75;
+      color: var(--text-secondary);
+      margin-bottom: 36px;
+      max-width: 440px;
       animation: fadeUp 0.8s 0.2s ease both;
     }
     .hero-buttons {
       display: flex;
-      gap: 16px;
+      gap: 14px;
       flex-wrap: wrap;
       animation: fadeUp 0.8s 0.3s ease both;
     }
     .btn-primary {
-      background: var(--accent);
+      background: var(--green);
       color: #fff;
-      padding: 16px 36px;
+      padding: 15px 34px;
       border-radius: 60px;
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 600;
       display: inline-flex;
       align-items: center;
       gap: 10px;
       transition: transform 0.2s, box-shadow 0.3s;
+      box-shadow: 0 4px 14px var(--green-glow);
     }
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 30px var(--accent-glow);
+      box-shadow: 0 8px 28px rgba(46,125,50,0.25);
     }
     .btn-primary svg { width: 18px; height: 18px; }
     .btn-outline {
-      background: transparent;
+      background: var(--bg-white);
       color: var(--text);
-      padding: 16px 36px;
+      padding: 15px 34px;
       border-radius: 60px;
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 600;
-      border: 1px solid rgba(255,255,255,0.12);
+      border: 1.5px solid var(--border-light);
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      transition: border-color 0.3s, transform 0.2s;
+      transition: border-color 0.3s, transform 0.2s, box-shadow 0.3s;
     }
     .btn-outline:hover {
-      border-color: var(--accent-light);
+      border-color: var(--green);
       transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
     }
 
-    /* Hero visual */
+    /* Hero image */
     .hero-visual {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      animation: fadeUp 1s 0.4s ease both;
-    }
-    .phone-mockup {
-      width: 280px;
-      height: 560px;
-      background: var(--bg-card);
-      border-radius: 40px;
-      border: 2px solid rgba(255,255,255,0.08);
-      position: relative;
-      overflow: hidden;
-      box-shadow:
-        0 0 0 1px rgba(255,255,255,0.03),
-        0 30px 80px rgba(0,0,0,0.6),
-        0 0 60px var(--accent-glow);
-    }
-    .phone-notch {
-      width: 120px; height: 28px;
-      background: var(--bg);
-      border-radius: 0 0 18px 18px;
-      margin: 0 auto;
+      flex: 1.1;
       position: relative;
       z-index: 2;
+      animation: fadeUp 1s 0.3s ease both;
     }
-    .phone-screen {
-      padding: 20px;
-      height: calc(100% - 28px);
-      display: flex;
-      flex-direction: column;
-    }
-    .phone-app-name {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 1.1rem;
-      margin-bottom: 4px;
-    }
-    .phone-app-sub {
-      font-size: 0.75rem;
-      color: var(--text-dim);
-      margin-bottom: 20px;
-    }
-    .phone-cal-card {
-      background: linear-gradient(135deg, rgba(108,92,231,0.15), rgba(0,184,148,0.1));
-      border: 1px solid rgba(108,92,231,0.15);
-      border-radius: 16px;
-      padding: 18px;
-      margin-bottom: 14px;
-    }
-    .phone-cal-num {
-      font-family: var(--font-display);
-      font-size: 2rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, var(--accent-light), var(--green));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .phone-cal-label {
-      font-size: 0.72rem;
-      color: var(--text-dim);
-      margin-top: 2px;
-    }
-    .phone-progress-row {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 14px;
-    }
-    .phone-progress-item {
-      flex: 1;
-      background: rgba(255,255,255,0.04);
-      border-radius: 12px;
-      padding: 12px 10px;
-      text-align: center;
-    }
-    .phone-progress-item .val {
-      font-weight: 700;
-      font-size: 0.95rem;
-    }
-    .phone-progress-item .lbl {
-      font-size: 0.62rem;
-      color: var(--text-dim);
-      margin-top: 3px;
-    }
-    .phone-bar {
-      height: 6px;
-      background: rgba(255,255,255,0.06);
-      border-radius: 6px;
-      margin-bottom: 10px;
-      overflow: hidden;
-    }
-    .phone-bar-fill {
-      height: 100%;
-      border-radius: 6px;
-      background: linear-gradient(90deg, var(--accent), var(--green));
-      animation: barGrow 2s ease both;
-    }
-    @keyframes barGrow {
-      from { width: 0; }
-    }
-    .phone-meal {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      background: rgba(255,255,255,0.03);
-      border-radius: 12px;
-      padding: 12px;
-      margin-bottom: 8px;
-    }
-    .phone-meal-icon {
-      width: 36px; height: 36px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      flex-shrink: 0;
-    }
-    .phone-meal-info { flex: 1; }
-    .phone-meal-info .name {
-      font-size: 0.82rem;
-      font-weight: 600;
-    }
-    .phone-meal-info .kcal {
-      font-size: 0.68rem;
-      color: var(--text-dim);
-    }
-
-    /* Floating orbit circles */
-    .orbit-ring {
-      position: absolute;
-      border: 1px solid rgba(108,92,231,0.08);
-      border-radius: 50%;
-      animation: orbitSpin 30s linear infinite;
-    }
-    .orbit-ring:nth-child(1) { width: 400px; height: 400px; }
-    .orbit-ring:nth-child(2) { width: 520px; height: 520px; animation-duration: 45s; animation-direction: reverse; }
-    .orbit-dot {
-      position: absolute;
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: var(--accent-light);
-      box-shadow: 0 0 12px var(--accent-glow);
-      top: 0; left: 50%;
-      transform: translate(-50%, -50%);
-    }
-    @keyframes orbitSpin { to { transform: rotate(360deg); } }
-
-    /* ========== SECTION COMMON ========== */
-    section {
-      padding: 120px 0;
+    .hero-image-wrapper {
       position: relative;
-      z-index: 1;
+      overflow: hidden;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .hero-image-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 28px;
+      box-shadow:
+        0 20px 60px rgba(0,0,0,0.12),
+        0 8px 24px rgba(0,0,0,0.08),
+        0 0 0 1px rgba(0,0,0,0.04);
+    }
+
+    /* Floating decorative leaves */
+    .leaf {
+      position: absolute;
+      font-size: 2rem;
+      opacity: 0.15;
+      animation: floatLeaf 6s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .leaf:nth-child(1) { top: 10%; right: 5%; animation-delay: 0s; }
+    .leaf:nth-child(2) { bottom: 15%; left: 3%; animation-delay: -2s; font-size: 1.5rem; }
+    .leaf:nth-child(3) { top: 40%; right: -2%; animation-delay: -4s; font-size: 1.2rem; }
+    @keyframes floatLeaf {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(8deg); }
+    }
+
+    /* ========== SECTIONS ========== */
+    section {
+      padding: 110px 0;
+      position: relative;
     }
     .section-label {
       font-family: var(--font-display);
       font-size: 0.78rem;
-      font-weight: 600;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.15em;
-      color: var(--accent-light);
-      margin-bottom: 16px;
+      color: var(--green);
+      margin-bottom: 14px;
     }
     .section-title {
       font-family: var(--font-display);
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-size: clamp(2rem, 4vw, 2.8rem);
       font-weight: 800;
       letter-spacing: -0.03em;
       line-height: 1.15;
-      margin-bottom: 20px;
+      color: var(--text);
+      margin-bottom: 16px;
     }
     .section-desc {
       font-size: 1.05rem;
-      color: var(--text-dim);
+      color: var(--text-secondary);
       line-height: 1.7;
-      max-width: 550px;
+      max-width: 520px;
     }
 
-    /* ========== ABOUT / WHAT WE DO ========== */
+    /* ========== ABOUT ========== */
+    #about {
+      background: var(--bg-white);
+    }
     #about .container {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 80px;
+      gap: 72px;
       align-items: center;
     }
     .about-cards {
@@ -507,19 +378,19 @@
       gap: 16px;
     }
     .about-card {
-      background: var(--bg-card);
-      border: 1px solid rgba(255,255,255,0.05);
+      background: var(--bg);
+      border: 1px solid var(--border-light);
       border-radius: var(--radius);
       padding: 28px 22px;
-      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
     }
     .about-card:hover {
       transform: translateY(-4px);
-      border-color: rgba(108,92,231,0.2);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(46,125,50,0.15);
     }
     .about-card-icon {
-      width: 48px; height: 48px;
+      width: 50px; height: 50px;
       border-radius: 14px;
       display: flex;
       align-items: center;
@@ -532,43 +403,59 @@
       font-size: 0.95rem;
       font-weight: 700;
       margin-bottom: 8px;
+      color: var(--text);
     }
     .about-card p {
-      font-size: 0.82rem;
-      color: var(--text-dim);
+      font-size: 0.84rem;
+      color: var(--text-muted);
       line-height: 1.6;
     }
 
     /* ========== APP SHOWCASE ========== */
-    #app {
-      background: linear-gradient(180deg, transparent 0%, rgba(108,92,231,0.03) 50%, transparent 100%);
-    }
-    #app .container {
-      text-align: center;
-    }
+    #app .container { text-align: center; }
     .app-showcase {
-      margin-top: 60px;
+      margin-top: 56px;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 60px;
+      gap: 64px;
       align-items: center;
       text-align: left;
     }
-    .app-phone-wrapper {
+    .app-screenshot-wrapper {
       display: flex;
       justify-content: center;
+    }
+    .app-screenshot-wrapper img {
+      max-height: 480px;
+      width: auto;
+      border-radius: 28px;
+      box-shadow:
+        0 20px 60px rgba(0,0,0,0.12),
+        0 8px 24px rgba(0,0,0,0.08),
+        0 0 0 1px rgba(0,0,0,0.04);
+      transition: transform 0.5s, box-shadow 0.5s;
+    }
+    .app-screenshot-wrapper:hover img {
+      transform: scale(1.02);
+      box-shadow:
+        0 28px 80px rgba(0,0,0,0.16),
+        0 12px 32px rgba(0,0,0,0.1),
+        0 0 0 1px rgba(0,0,0,0.04);
     }
     .app-features { max-width: 480px; }
     .app-feature {
       display: flex;
       gap: 18px;
-      margin-bottom: 32px;
-      padding: 22px;
+      margin-bottom: 28px;
+      padding: 20px;
       border-radius: var(--radius);
-      transition: background 0.3s;
+      border: 1px solid transparent;
+      transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
     }
     .app-feature:hover {
-      background: rgba(255,255,255,0.02);
+      background: var(--bg-white);
+      border-color: var(--border-light);
+      box-shadow: var(--shadow-sm);
     }
     .app-feature-icon {
       width: 52px; height: 52px;
@@ -582,63 +469,65 @@
     .app-feature h4 {
       font-family: var(--font-display);
       font-weight: 700;
-      font-size: 1.05rem;
+      font-size: 1.02rem;
       margin-bottom: 6px;
+      color: var(--text);
     }
     .app-feature p {
       font-size: 0.9rem;
-      color: var(--text-dim);
+      color: var(--text-muted);
       line-height: 1.6;
     }
     .store-buttons {
       display: flex;
       gap: 14px;
-      margin-top: 40px;
+      margin-top: 36px;
       flex-wrap: wrap;
     }
     .store-btn {
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      background: var(--bg-card);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: var(--text);
+      color: #fff;
       border-radius: 14px;
       padding: 14px 24px;
-      transition: border-color 0.3s, transform 0.2s;
+      transition: transform 0.2s, box-shadow 0.3s;
     }
     .store-btn:hover {
-      border-color: var(--accent-light);
       transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
     }
-    .store-btn svg { width: 28px; height: 28px; }
+    .store-btn svg { width: 26px; height: 26px; fill: #fff; }
     .store-btn-text .small {
-      font-size: 0.65rem;
-      color: var(--text-dim);
+      font-size: 0.62rem;
+      opacity: 0.8;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
     }
     .store-btn-text .big {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       font-weight: 600;
     }
 
     /* ========== CONTACT ========== */
     #contact {
+      background: var(--bg-white);
       text-align: center;
     }
     .contact-box {
-      max-width: 560px;
+      max-width: 540px;
       margin: 40px auto 0;
-      background: var(--bg-card);
-      border: 1px solid rgba(255,255,255,0.06);
+      background: var(--bg);
+      border: 1px solid var(--border-light);
       border-radius: var(--radius);
       padding: 48px;
     }
     .contact-email {
       font-family: var(--font-display);
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       font-weight: 600;
-      color: var(--accent-light);
+      color: var(--green);
       display: inline-flex;
       align-items: center;
       gap: 10px;
@@ -646,7 +535,7 @@
     }
     .contact-box p {
       font-size: 0.95rem;
-      color: var(--text-dim);
+      color: var(--text-muted);
       line-height: 1.7;
     }
     .contact-email-btn {
@@ -654,25 +543,25 @@
       align-items: center;
       gap: 10px;
       margin-top: 28px;
-      background: var(--accent);
+      background: var(--green);
       color: #fff;
       padding: 14px 32px;
       border-radius: 50px;
       font-weight: 600;
       font-size: 0.95rem;
       transition: transform 0.2s, box-shadow 0.3s;
+      box-shadow: 0 4px 14px var(--green-glow);
     }
     .contact-email-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 30px var(--accent-glow);
+      box-shadow: 0 8px 28px rgba(46,125,50,0.25);
     }
 
     /* ========== FOOTER ========== */
     footer {
-      border-top: 1px solid rgba(255,255,255,0.05);
-      padding: 48px 0 36px;
-      position: relative;
-      z-index: 1;
+      border-top: 1px solid var(--border-light);
+      padding: 44px 0 32px;
+      background: var(--bg);
     }
     footer .container {
       display: flex;
@@ -689,28 +578,25 @@
     .footer-left .logo-placeholder {
       width: 32px; height: 32px;
       border-radius: 8px;
-      background: linear-gradient(135deg, var(--accent), var(--green));
+      background: linear-gradient(135deg, var(--green), var(--green-light));
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       font-weight: 800;
       color: #fff;
     }
     .footer-copy {
       font-size: 0.82rem;
-      color: var(--text-dim);
+      color: var(--text-muted);
     }
-    .footer-links {
-      display: flex;
-      gap: 28px;
-    }
+    .footer-links { display: flex; gap: 28px; }
     .footer-links a {
       font-size: 0.85rem;
-      color: var(--text-dim);
+      color: var(--text-muted);
       transition: color 0.25s;
     }
-    .footer-links a:hover { color: var(--text); }
+    .footer-links a:hover { color: var(--green); }
 
     /* ========== ANIMATIONS ========== */
     @keyframes fadeUp {
@@ -732,7 +618,7 @@
       .hero .container {
         flex-direction: column;
         text-align: center;
-        gap: 50px;
+        gap: 48px;
       }
       .hero-text { max-width: 100%; }
       .hero p { margin-left: auto; margin-right: auto; }
@@ -747,7 +633,7 @@
         grid-template-columns: 1fr;
         gap: 48px;
       }
-      .app-phone-wrapper { order: -1; }
+      .app-screenshot-wrapper { order: -1; }
       .store-buttons { justify-content: center; }
     }
     @media (max-width: 600px) {
@@ -758,33 +644,26 @@
         position: absolute;
         top: 100%;
         left: 0; right: 0;
-        background: rgba(5,5,8,0.95);
+        background: rgba(247,250,247,0.97);
         backdrop-filter: blur(20px);
         padding: 24px;
         gap: 20px;
-        border-bottom: 1px solid rgba(255,255,255,0.05);
+        border-bottom: 1px solid var(--border-light);
       }
       .nav-toggle { display: flex; }
       .about-cards { grid-template-columns: 1fr; }
-      .phone-mockup { width: 240px; height: 480px; }
-      .contact-box { padding: 32px 24px; }
+      .contact-box { padding: 32px 20px; }
+      .hero { padding: 110px 0 60px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Ambient Background -->
-  <div class="ambient">
-    <div class="blob"></div>
-    <div class="blob"></div>
-    <div class="blob"></div>
-  </div>
-
   <!-- Navigation -->
   <nav id="navbar">
     <div class="container">
       <a href="#" class="nav-logo">
-        <!-- LOGO PLACEHOLDER — replace with: <img src="logo.png" alt="EasyDay" class="logo-img" style="display:block"> -->
+        <!-- LOGO: replace placeholder with <img src="logo.png" alt="EasyDay" style="width:42px;height:42px;border-radius:12px"> -->
         <div class="logo-placeholder">ED</div>
         EasyDay
       </a>
@@ -802,14 +681,17 @@
 
   <!-- Hero -->
   <section class="hero">
+    <span class="leaf">🍃</span>
+    <span class="leaf">🌿</span>
+    <span class="leaf">🍀</span>
     <div class="container">
       <div class="hero-text">
         <div class="hero-badge">
           <span class="dot"></span>
           Mobile App Studio
         </div>
-        <h1>We Build Apps<br>That Make Life<br><span class="gradient">EasyDay.</span></h1>
-        <p>A passionate app studio crafting intuitive, beautiful mobile experiences for Android & iOS that people actually love to use.</p>
+        <h1>Track Calories.<br>Eat Better.<br><span class="highlight">Get Results.</span></h1>
+        <p>We build beautiful, intuitive mobile apps for Android & iOS. Our flagship app helps thousands track nutrition and reach their health goals.</p>
         <div class="hero-buttons">
           <a href="#app" class="btn-primary">
             Explore Our App
@@ -819,47 +701,9 @@
         </div>
       </div>
       <div class="hero-visual">
-        <div class="orbit-ring"><div class="orbit-dot"></div></div>
-        <div class="orbit-ring"><div class="orbit-dot"></div></div>
-        <div class="phone-mockup">
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <div class="phone-app-name">Calorie Tracker</div>
-            <div class="phone-app-sub">Today's Summary</div>
-            <div class="phone-cal-card">
-              <div class="phone-cal-num">1,480</div>
-              <div class="phone-cal-label">calories consumed</div>
-            </div>
-            <div class="phone-progress-row">
-              <div class="phone-progress-item">
-                <div class="val" style="color: var(--accent-light)">62g</div>
-                <div class="lbl">Protein</div>
-              </div>
-              <div class="phone-progress-item">
-                <div class="val" style="color: var(--green)">185g</div>
-                <div class="lbl">Carbs</div>
-              </div>
-              <div class="phone-progress-item">
-                <div class="val" style="color: var(--orange)">48g</div>
-                <div class="lbl">Fat</div>
-              </div>
-            </div>
-            <div class="phone-bar"><div class="phone-bar-fill" style="width:68%"></div></div>
-            <div class="phone-meal">
-              <div class="phone-meal-icon" style="background:rgba(108,92,231,0.12)">🥗</div>
-              <div class="phone-meal-info">
-                <div class="name">Lunch — Chicken Salad</div>
-                <div class="kcal">420 kcal</div>
-              </div>
-            </div>
-            <div class="phone-meal">
-              <div class="phone-meal-icon" style="background:rgba(0,184,148,0.12)">🍳</div>
-              <div class="phone-meal-info">
-                <div class="name">Breakfast — Omelette</div>
-                <div class="kcal">310 kcal</div>
-              </div>
-            </div>
-          </div>
+        <div class="hero-image-wrapper">
+          <!-- Hero banner image (first screenshot you shared) -->
+          <img src="assets/Original.png" alt="Calorie Tracker App — Track calories, eat better, get results">
         </div>
       </div>
     </div>
@@ -875,22 +719,22 @@
       </div>
       <div class="about-cards reveal">
         <div class="about-card">
-          <div class="about-card-icon" style="background:rgba(108,92,231,0.12)">📱</div>
+          <div class="about-card-icon" style="background: var(--green-pale)">📱</div>
           <h4>Android Apps</h4>
           <p>Native and cross-platform apps built for the Play Store with modern design patterns.</p>
         </div>
         <div class="about-card">
-          <div class="about-card-icon" style="background:rgba(0,184,148,0.12)">🍎</div>
+          <div class="about-card-icon" style="background: #e3f2fd">🍎</div>
           <h4>iOS Apps</h4>
           <p>Polished, performant apps for iPhone and iPad that meet Apple's high standards.</p>
         </div>
         <div class="about-card">
-          <div class="about-card-icon" style="background:rgba(225,112,85,0.12)">🎨</div>
+          <div class="about-card-icon" style="background: #fff3e0">🎨</div>
           <h4>UI/UX Design</h4>
-          <p>Interfaces that are intuitive and beautiful, because great apps start with great design.</p>
+          <p>Interfaces that are intuitive and beautiful — great apps start with great design.</p>
         </div>
         <div class="about-card">
-          <div class="about-card-icon" style="background:rgba(162,155,254,0.12)">🚀</div>
+          <div class="about-card-icon" style="background: #fce4ec">🚀</div>
           <h4>Launch & Growth</h4>
           <p>From concept to App Store — we handle the full lifecycle of your mobile product.</p>
         </div>
@@ -904,87 +748,52 @@
       <div class="reveal">
         <div class="section-label">Featured App</div>
         <h2 class="section-title">Calorie Tracker</h2>
-        <p class="section-desc" style="margin: 0 auto;">Track your nutrition effortlessly. Set goals, log meals, and stay on top of your daily macros with a clean, distraction-free interface.</p>
+        <p class="section-desc" style="margin:0 auto">All-in-one app for a healthy lifestyle. Track calories, log meals, monitor water intake, and reach your fitness goals effortlessly.</p>
       </div>
       <div class="app-showcase">
-        <div class="app-phone-wrapper reveal">
-          <div class="phone-mockup" style="box-shadow: 0 0 0 1px rgba(255,255,255,0.03), 0 40px 100px rgba(0,0,0,0.5), 0 0 80px var(--green-glow);">
-            <div class="phone-notch"></div>
-            <div class="phone-screen">
-              <div class="phone-app-name">Calorie Tracker</div>
-              <div class="phone-app-sub">Weekly Overview</div>
-              <div class="phone-cal-card" style="background: linear-gradient(135deg, rgba(0,184,148,0.15), rgba(108,92,231,0.1));">
-                <div class="phone-cal-num">12,640</div>
-                <div class="phone-cal-label">calories this week</div>
-              </div>
-              <div style="display:flex;gap:4px;margin-bottom:16px;align-items:flex-end;height:80px;padding:0 4px;">
-                <div style="flex:1;background:rgba(108,92,231,0.3);border-radius:6px 6px 0 0;height:50%"></div>
-                <div style="flex:1;background:rgba(108,92,231,0.3);border-radius:6px 6px 0 0;height:70%"></div>
-                <div style="flex:1;background:rgba(108,92,231,0.3);border-radius:6px 6px 0 0;height:60%"></div>
-                <div style="flex:1;background:rgba(108,92,231,0.3);border-radius:6px 6px 0 0;height:85%"></div>
-                <div style="flex:1;background:rgba(108,92,231,0.3);border-radius:6px 6px 0 0;height:45%"></div>
-                <div style="flex:1;background:rgba(0,184,148,0.4);border-radius:6px 6px 0 0;height:90%"></div>
-                <div style="flex:1;background:rgba(108,92,231,0.15);border-radius:6px 6px 0 0;height:30%"></div>
-              </div>
-              <div style="display:flex;justify-content:space-between;font-size:0.55rem;color:var(--text-dim);padding:0 4px;margin-bottom:16px;">
-                <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span style="color:var(--green)">Sat</span><span>Sun</span>
-              </div>
-              <div class="phone-meal">
-                <div class="phone-meal-icon" style="background:rgba(0,184,148,0.12)">🎯</div>
-                <div class="phone-meal-info">
-                  <div class="name">Goal: 2,000 kcal/day</div>
-                  <div class="kcal">On track — 68% today</div>
-                </div>
-              </div>
-              <div class="phone-meal">
-                <div class="phone-meal-icon" style="background:rgba(225,112,85,0.12)">💧</div>
-                <div class="phone-meal-info">
-                  <div class="name">Water Intake</div>
-                  <div class="kcal">6 of 8 glasses</div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="app-screenshot-wrapper reveal">
+          <!-- App screenshot (second image you shared) -->
+          <img src="assets/Original.png" alt="Calorie Tracker — App Screenshot">
         </div>
         <div class="app-features reveal">
           <div class="app-feature">
-            <div class="app-feature-icon" style="background:rgba(108,92,231,0.12)">📊</div>
+            <div class="app-feature-icon" style="background:var(--green-pale)">🔥</div>
             <div>
-              <h4>Smart Tracking</h4>
-              <p>Log meals quickly and see real-time calorie and macronutrient breakdowns.</p>
+              <h4>Calorie Counter</h4>
+              <p>Instantly log meals and track daily calorie intake with a beautiful circular progress view.</p>
             </div>
           </div>
           <div class="app-feature">
-            <div class="app-feature-icon" style="background:rgba(0,184,148,0.12)">🎯</div>
+            <div class="app-feature-icon" style="background:#e3f2fd">📖</div>
             <div>
-              <h4>Personal Goals</h4>
-              <p>Set custom daily goals for calories, protein, carbs, and fat to match your lifestyle.</p>
+              <h4>Food Diary</h4>
+              <p>Keep a detailed food diary with breakfast, lunch, dinner and snack logging.</p>
             </div>
           </div>
           <div class="app-feature">
-            <div class="app-feature-icon" style="background:rgba(225,112,85,0.12)">📈</div>
+            <div class="app-feature-icon" style="background:#e0f7fa">💧</div>
             <div>
-              <h4>Progress Insights</h4>
-              <p>Weekly and monthly reports that help you understand trends and stay motivated.</p>
+              <h4>Water & Activity</h4>
+              <p>Track water intake, steps, and workouts — all in one place for a complete health picture.</p>
             </div>
           </div>
           <div class="app-feature">
-            <div class="app-feature-icon" style="background:rgba(162,155,254,0.12)">✨</div>
+            <div class="app-feature-icon" style="background:#fff3e0">📈</div>
             <div>
-              <h4>Clean Interface</h4>
-              <p>No clutter, no ads bombardment — just a focused, beautiful experience.</p>
+              <h4>Progress & Goals</h4>
+              <p>Weekly charts, weight trends, and achievements to keep you motivated every day.</p>
             </div>
           </div>
           <div class="store-buttons">
             <a href="#" class="store-btn">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-1.832l2.386 1.381a1 1 0 0 1 0 1.488l-2.386 1.381-2.54-2.544 2.54-2.544zM5.864 3.387l10.937 6.333-2.302 2.302-8.635-8.635z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-1.832l2.386 1.381a1 1 0 0 1 0 1.488l-2.386 1.381-2.54-2.544 2.54-2.544zM5.864 3.387l10.937 6.333-2.302 2.302-8.635-8.635z"/></svg>
               <div class="store-btn-text">
                 <div class="small">Get it on</div>
                 <div class="big">Google Play</div>
               </div>
             </a>
             <a href="#" class="store-btn">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
               <div class="store-btn-text">
                 <div class="small">Download on the</div>
                 <div class="big">App Store</div>
@@ -1002,7 +811,7 @@
       <div class="reveal">
         <div class="section-label">Get in Touch</div>
         <h2 class="section-title">Let's Talk</h2>
-        <p class="section-desc" style="margin:0 auto">Have a question, idea, or want to collaborate? We'd love to hear from you.</p>
+        <p class="section-desc" style="margin:0 auto">Have a question, feedback, or want to collaborate? We'd love to hear from you.</p>
       </div>
       <div class="contact-box reveal">
         <div class="contact-email">
@@ -1034,29 +843,22 @@
   </footer>
 
   <script>
-    // Nav scroll effect
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
       navbar.classList.toggle('scrolled', window.scrollY > 50);
     });
 
-    // Mobile nav toggle
     const navToggle = document.getElementById('navToggle');
     const navLinks = document.getElementById('navLinks');
-    navToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
-    });
+    navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
     navLinks.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => navLinks.classList.remove('open'));
     });
 
-    // Scroll reveal
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
     }, { threshold: 0.15 });
     reveals.forEach(el => observer.observe(el));
