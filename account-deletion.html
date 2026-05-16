@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="assets/ico.ico">
+  <title>Account Deletion — EasyDay App Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #f7faf7;
+      --bg-white: #ffffff;
+      --text: #1a2e1a;
+      --text-secondary: #4a6a4a;
+      --text-muted: #7a957a;
+      --green: #2e7d32;
+      --green-light: #4caf50;
+      --green-pale: #e8f5e9;
+      --green-glow: rgba(46, 125, 50, 0.15);
+      --border-light: rgba(0,0,0,0.06);
+      --radius: 20px;
+      --font-display: 'Plus Jakarta Sans', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--green); text-decoration: none; transition: color 0.25s; }
+    a:hover { color: var(--text); }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 16px 0;
+      background: rgba(247,250,247,0.85);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-light);
+    }
+    nav .container {
+      max-width: 1200px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      font-family: var(--font-display); font-weight: 800; font-size: 1.35rem;
+      color: var(--text); letter-spacing: -0.03em;
+    }
+    .nav-logo .logo-img {
+      width: 42px; height: 42px; border-radius: 0;
+      flex-shrink: 0; object-fit: contain;
+    }
+    .nav-back {
+      font-size: 0.9rem; font-weight: 500; color: var(--text-muted);
+      display: inline-flex; align-items: center; gap: 6px;
+      transition: color 0.25s;
+    }
+    .nav-back:hover { color: var(--green); }
+
+    .legal-page {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 130px 24px 100px;
+    }
+    .legal-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--green-pale); border: 1px solid rgba(46,125,50,0.15);
+      border-radius: 50px; padding: 7px 18px;
+      font-size: 0.78rem; font-weight: 700; color: var(--green);
+      margin-bottom: 20px;
+    }
+    .legal-page h1 {
+      font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 800; letter-spacing: -0.03em; margin-bottom: 8px; color: var(--text);
+    }
+    .legal-page .effective {
+      font-size: 0.9rem; color: var(--text-muted); margin-bottom: 40px;
+    }
+    .legal-page .intro {
+      font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7;
+      margin-bottom: 48px; padding-bottom: 32px;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .legal-page h2 {
+      font-family: var(--font-display); font-size: 1.25rem; font-weight: 700;
+      margin: 40px 0 16px; letter-spacing: -0.02em; color: var(--text);
+    }
+    .legal-page p {
+      font-size: 0.95rem; color: var(--text-secondary); line-height: 1.75; margin-bottom: 16px;
+    }
+    .legal-page ul { list-style: none; margin: 0 0 20px; padding: 0; }
+    .legal-page ul li {
+      font-size: 0.92rem; color: var(--text-secondary); line-height: 1.7;
+      padding: 6px 0 6px 24px; position: relative;
+    }
+    .legal-page ul li::before {
+      content: '';
+      position: absolute; left: 0; top: 14px;
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--green-light);
+    }
+    .legal-page .contact-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--green); font-weight: 500;
+    }
+
+    footer {
+      border-top: 1px solid var(--border-light);
+      padding: 44px 0 32px; background: var(--bg);
+    }
+    footer .container {
+      max-width: 1200px; margin: 0 auto; padding: 0 24px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 20px;
+    }
+    .footer-left { display: flex; align-items: center; gap: 12px; }
+    .footer-left .logo-img {
+      width: 32px; height: 32px; border-radius: 0; object-fit: contain;
+    }
+    .footer-copy { font-size: 0.82rem; color: var(--text-muted); }
+    .footer-links { display: flex; gap: 28px; }
+    .footer-links a { font-size: 0.85rem; color: var(--text-muted); transition: color 0.25s; }
+    .footer-links a:hover { color: var(--green); }
+
+    @media (max-width: 600px) {
+      footer .container { flex-direction: column; text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/Icon.png" alt="EasyDay Apps" class="logo-img">
+        EasyDay Apps
+      </a>
+      <a href="index.html" class="nav-back">
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/></svg>
+        Back to Home
+      </a>
+    </div>
+  </nav>
+
+  <div class="legal-page">
+    <div class="legal-badge">🗑️ User Data</div>
+    <h1>Account and Data Deletion</h1>
+    <p class="effective">Effective Date: May 16, 2026</p>
+    <p class="intro">This page explains how users of EasyDay App Studio mobile applications can request deletion of an account and associated personal data.</p>
+
+    <h2>How to Request Deletion</h2>
+    <p>To request account or data deletion, email us at:</p>
+    <p><a href="mailto:easyday.appstudio@gmail.com" class="contact-link">
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/></svg>
+      easyday.appstudio@gmail.com
+    </a></p>
+    <p>Please include the following information so we can identify your data:</p>
+    <ul>
+      <li>The app name you used</li>
+      <li>The email address or account ID connected to the app, if applicable</li>
+      <li>A short message saying that you want your account and data deleted</li>
+    </ul>
+
+    <h2>What Will Be Deleted</h2>
+    <p>After verifying the request, we will delete personal data associated with your account where applicable, including profile or account information and app usage data connected to your account.</p>
+    <p>User-submitted data such as food logs or health entries are not stored permanently by EasyDay App Studio unless otherwise stated in the app.</p>
+
+    <h2>Data We May Need to Keep</h2>
+    <p>Some limited records may be retained only when required for legal, security, fraud-prevention, accounting, or platform compliance reasons.</p>
+
+    <h2>Processing Time</h2>
+    <p>We aim to process deletion requests within 7 days after receiving enough information to identify the account or data.</p>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-left">
+        <img src="assets/Icon.png" alt="EasyDay Apps" class="logo-img">
+        <span class="footer-copy">&copy; 2026 EasyDay App Studio. All rights reserved.</span>
+      </div>
+      <div class="footer-links">
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-of-service.html">Terms of Service</a>
+        <a href="mailto:easyday.appstudio@gmail.com">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
