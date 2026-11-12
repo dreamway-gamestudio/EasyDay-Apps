@@ -345,18 +345,17 @@ a.feature-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px #4a55
   position: relative;
   align-self: stretch;
   min-width: 0;
-  min-height: clamp(330px, 36vw, 400px);
+  min-height: clamp(350px, 38vw, 440px);
 }
 .ai-visual img {
   position: absolute;
-  bottom: -26%;
+  bottom: 0;
   left: 50%;
-  width: calc(116% + 16px);
-  height: 132%;
-  max-width: none;
-  object-fit: contain;
-  object-position: center bottom;
-  transform: translateX(-50%);
+  width: auto;
+  height: auto;
+  max-width: calc(116% + 16px);
+  max-height: 117%;
+  transform: translate(-50%, 15%);
 }
 .ai-demo-arrow { width: 100%; height: auto; color: #cff478; }
 .ai-result {
@@ -530,7 +529,7 @@ a.feature-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px #4a55
   .feature-icon { width: 33px; height: 33px; border-radius: 10px; }
   .camera-art, .diary-art, .dumbbell-art { right: -4px; bottom: -7px; transform: rotate(var(--art-tilt)) scale(.84); }
   .ai-panel { border-radius: 21px; }
-  .ai-visual { min-height: 300px; }
+  .ai-visual { min-height: 320px; }
   .progress-section { grid-template-columns: 1fr; gap: 17px; }
   .progress-copy { grid-row: 1; }
   .progress-details { margin-top: 15px; gap: 6px; }
@@ -550,8 +549,8 @@ a.feature-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px #4a55
 @media (max-width: 520px) {
   .ai-panel { padding: 0 18px 20px; }
   .ai-demo { grid-template-columns: minmax(0, 1fr); gap: 9px; }
-  .ai-visual { min-height: clamp(250px, 66vw, 340px); overflow: hidden; }
-  .ai-visual img { width: 100%; }
+  .ai-visual { min-height: clamp(275px, 72vw, 370px); overflow: hidden; }
+  .ai-visual img { max-width: 100%; }
   .ai-demo-arrow { justify-self: center; width: 27px; transform: rotate(90deg); }
   .ai-result { justify-self: center; width: min(100%, 330px); }
 }
