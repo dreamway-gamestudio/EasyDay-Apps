@@ -84,7 +84,6 @@
   background: radial-gradient(ellipse at 85% 70%, #384d2a, transparent 70%), #24321f;
 }
 :root[data-theme="dark"] .download-copy p { color: #c2d0b8; }
-:root[data-theme="dark"] .download-panel .button { color: #17210e; background: #caec92; }
 :root[data-theme="dark"] .site-footer { border-color: #303d2c; }
 
 :root[data-theme="dark"] .legal-page {
