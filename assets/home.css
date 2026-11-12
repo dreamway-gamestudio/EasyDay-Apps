@@ -349,10 +349,10 @@ a.feature-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px #4a55
 }
 .ai-visual img {
   position: absolute;
-  bottom: -24%;
+  bottom: -26%;
   left: 50%;
-  width: calc(108% + 16px);
-  height: 124%;
+  width: calc(116% + 16px);
+  height: 132%;
   max-width: none;
   object-fit: contain;
   object-position: center bottom;
