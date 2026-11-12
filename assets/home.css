@@ -348,6 +348,8 @@ a.feature-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px #4a55
   min-height: clamp(350px, 38vw, 440px);
 }
 .ai-visual img {
+  --photo-overhang: 15%;
+  --photo-mask: linear-gradient(#000 calc(97% - var(--photo-overhang)), transparent calc(100% - var(--photo-overhang)));
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -355,7 +357,9 @@ a.feature-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px #4a55
   height: auto;
   max-width: calc(116% + 16px);
   max-height: 117%;
-  transform: translate(-50%, 15%);
+  -webkit-mask-image: var(--photo-mask);
+  mask-image: var(--photo-mask);
+  transform: translate(-50%, var(--photo-overhang));
 }
 .ai-demo-arrow { width: 100%; height: auto; color: #cff478; }
 .ai-result {
