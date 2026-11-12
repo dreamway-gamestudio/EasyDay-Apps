@@ -46,6 +46,7 @@
 }
 :root[data-theme="dark"] .hero .floating small { color: #c1d0b9; }
 :root[data-theme="dark"] .hero .tile-icon { color: #d8f5a7; background: #3b562e; }
+:root[data-theme="dark"] .hero .float-camera .tile-icon { background: #443456; }
 :root[data-theme="dark"] .hero .water-icon { color: #a8def1; background: #284653; }
 
 :root[data-theme="dark"] .feature-card {
