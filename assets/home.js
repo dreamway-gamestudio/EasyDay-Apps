@@ -43,7 +43,6 @@ const russianCopy = {
   screenDiary: 'Дневник питания',
   screenDiet: 'Индивидуальный рацион',
   screenWorkouts: 'Обмен калорий',
-  screenDark: 'Тёмная тема',
   downloadTitle: 'Начни с полезных привычек',
   contact: 'Связаться с нами',
   privacy: 'Политика конфиденциальности',
@@ -96,7 +95,6 @@ const englishValues = copyElements.map((element) => {
 const languageLinks = [...document.querySelectorAll('[data-lang]')];
 const themeToggle = document.querySelector('.theme-toggle');
 const galleryButtons = [...document.querySelectorAll('[data-gallery]')];
-const galleryDarkDemo = document.querySelector('[data-gallery="07-home-dark"]');
 const galleryImage = document.getElementById('gallery-image');
 const galleryCaption = document.getElementById('gallery-caption');
 const showcaseImages = document.querySelectorAll('[data-screen]:not(#gallery-image)');
@@ -107,7 +105,7 @@ let theme = 'light';
 
 function updateImage(image) {
   const screen = (theme === 'dark' && image.dataset.darkHeroScreen) || image.dataset.screen;
-  const usesDarkSet = theme === 'dark' && image.hasAttribute('data-theme-screen') && screen !== '07-home-dark';
+  const usesDarkSet = theme === 'dark' && image.hasAttribute('data-theme-screen');
   const extension = screens[screen].extension ?? 'png';
   const source = `assets/screen-${language}-${usesDarkSet ? 'dark-' : ''}${screen}.${extension}`;
   image.toggleAttribute('data-dark-screen', usesDarkSet || screen === '07-home-dark');
@@ -131,7 +129,6 @@ function updatePage() {
   siteTheme.apply(theme);
   document.documentElement.lang = language;
   themeToggle.setAttribute('aria-checked', String(theme === 'dark'));
-  galleryDarkDemo.hidden = theme === 'dark';
   description.content = language === 'ru'
     ? 'Следи за калориями, планируй питание и отслеживай активность с Calorie Tracker от EasyDay Apps.'
     : englishDescription;
@@ -160,8 +157,7 @@ function updatePage() {
   }
 
   showcaseImages.forEach(updateImage);
-  const selectedScreen = galleryImage.dataset.screen;
-  showScreen(theme === 'dark' && selectedScreen === '07-home-dark' ? '01-home-activity' : selectedScreen);
+  showScreen(galleryImage.dataset.screen);
   siteTheme.updatePageLinks();
 }
 
