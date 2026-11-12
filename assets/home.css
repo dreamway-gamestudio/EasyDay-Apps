@@ -263,7 +263,6 @@ h2 { font-size: clamp(2rem, 4.25vw, 3.75rem); line-height: 1.04; font-weight: 88
   padding: 21px;
   padding-bottom: 114px;
   border-radius: 22px;
-  overflow: hidden;
   background: linear-gradient(155deg,#f3f0e7,#f1efe5);
   isolation: isolate;
 }
@@ -271,18 +270,15 @@ a.feature-card { transition: box-shadow .2s ease, transform .2s ease; }
 a.feature-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px #4a552917; }
 .feature-card h3 { margin-block: 10px 7px; font-size: clamp(1.15rem, 2vw, 1.58rem); line-height: 1.1; letter-spacing: -.055em; text-wrap: initial; }
 .feature-card p { max-width: 250px; color: #383e34; font-size: .9rem; line-height: 1.4; }
-.feature-icon { display: grid; width: 40px; height: 40px; place-items: center; border-radius: 13px; background: #ccf572; font-size: 1.75rem; font-weight: 800; line-height: 1; }
-.workout-icon { position: relative; }
-.workout-icon::before, .workout-icon::after { content: ""; position: absolute; background: currentColor; border-radius: 2px; }
-.workout-icon::before { width: 52%; height: 7%; }
-.workout-icon::after { left: 27%; width: 12%; height: 40%; box-shadow: .65em 0 currentColor; }
+.feature-icon { display: grid; width: 40px; height: 40px; place-items: center; border-radius: 13px; background: #ccf572; }
+.feature-icon img { width: 80%; height: 80%; object-fit: contain; }
 .camera-art, .diary-art, .dumbbell-art {
   position: absolute;
-  right: 24px;
-  bottom: 18px;
+  right: -3px;
+  bottom: -8px;
   z-index: -1;
-  transform: rotate(var(--art-tilt, -12deg));
-  transform-origin: bottom right;
+  transform: rotate(var(--art-tilt)) scale(1.13);
+  pointer-events: none;
 }
 .camera-art, .diary-art { background: linear-gradient(135deg,#e3f3b1,#b5d65b); border: 5px solid #85a83b; box-shadow: 0 8px 20px #5e771629; }
 .camera-art { --art-tilt: -9deg; width: 112px; height: 74px; border-radius: 18px; }
@@ -466,12 +462,12 @@ a.feature-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px #4a55
   .section { margin-block: 33px; }
   .section-intro { grid-template-columns: 1fr; gap: 10px; margin-bottom: 15px; }
   .section-intro p, .ai-copy > p, .progress-copy p, .app-copy > p { font-size: .92rem; }
-  .feature-grid { grid-template-columns: 1fr; gap: 9px; }
+  .feature-grid { grid-template-columns: 1fr; gap: 23px; }
   .feature-card { padding: 14px 120px 16px 14px; min-height: 133px; border-radius: 16px; }
   .feature-card h3 { font-size: 1.12rem; letter-spacing: -.05em; overflow-wrap: anywhere; }
   .feature-card p { font-size: .77rem; }
-  .feature-icon { width: 33px; height: 33px; border-radius: 10px; font-size: 1.3rem; }
-  .camera-art, .diary-art, .dumbbell-art { right: 15px; bottom: 14px; transform: scale(.72) rotate(var(--art-tilt)); }
+  .feature-icon { width: 33px; height: 33px; border-radius: 10px; }
+  .camera-art, .diary-art, .dumbbell-art { right: -4px; bottom: -7px; transform: rotate(var(--art-tilt)) scale(.84); }
   .ai-panel { grid-template-columns: 1fr; border-radius: 21px; }
   .ai-copy { padding: 22px 20px 8px; }
   .ai-visual { flex-direction: column; gap: 16px; padding: 26px 20px; }
