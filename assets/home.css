@@ -114,11 +114,11 @@ p { line-height: 1.55; }
   content: "";
   left: 8%;
   right: 2%;
-  bottom: -.18em;
-  height: .22em;
-  border-top: .069em solid #a9d645;
+  bottom: -.25em;
+  height: .08em;
+  background: #a9d645;
   border-radius: 50%;
-  transform: rotate(-2deg);
+  transform: rotate(-1.5deg);
 }
 .hero-description { max-width: 415px; margin-top: 28px; color: #383d35; font-size: clamp(1.08rem, 1.8vw, 1.37rem); font-weight: 500; }
 .actions { flex-wrap: wrap; gap: 10px; }
