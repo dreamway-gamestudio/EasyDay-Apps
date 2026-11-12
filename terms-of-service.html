@@ -30,7 +30,6 @@
       font-family: var(--font-body);
       background: var(--bg);
       color: var(--text);
-      overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
     a { color: var(--green); text-decoration: none; transition: color 0.25s; }
@@ -45,11 +44,11 @@
     }
     nav .container {
       max-width: 1200px; margin: 0 auto; padding: 0 24px;
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
     }
     .nav-logo {
       display: flex; align-items: center; gap: 10px;
-      font-family: var(--font-display); font-weight: 800; font-size: 1.35rem;
+      font-family: var(--font-display); font-weight: 800; font-size: clamp(1.05rem, 4.5vw, 1.35rem);
       color: var(--text); letter-spacing: -0.03em;
     }
     .logo-placeholder {
@@ -61,12 +60,13 @@
     }
     .nav-back {
       font-size: 0.9rem; font-weight: 500; color: var(--text-muted);
-      display: inline-flex; align-items: center; gap: 6px;
+      display: inline-flex; align-items: center; gap: 6px; text-align: right;
       transition: color 0.25s;
     }
     .nav-back:hover { color: var(--green); }
+    .nav-back svg { flex: none; }
 
-    .legal-page {
+    main.legal-page {
       max-width: 780px;
       margin: 0 auto;
       padding: 130px 24px 100px;
@@ -114,27 +114,27 @@
     }
     .legal-page .contact-link {
       display: inline-flex; align-items: center; gap: 6px;
-      color: var(--green); font-weight: 500;
+      color: var(--green); font-weight: 500; overflow-wrap: anywhere;
     }
 
     footer {
       border-top: 1px solid var(--border-light);
-      padding: 44px 0 32px; background: var(--bg);
+      padding: 44px 0 calc(32px + env(safe-area-inset-bottom, 0px)); background: var(--bg);
     }
     footer .container {
       max-width: 1200px; margin: 0 auto; padding: 0 24px;
       display: flex; justify-content: space-between; align-items: center;
       flex-wrap: wrap; gap: 20px;
     }
-    .footer-left { display: flex; align-items: center; gap: 12px; }
+    .footer-left { display: flex; align-items: center; gap: 12px; min-width: 0; }
     .footer-left .logo-placeholder {
-      width: 32px; height: 32px; border-radius: 8px;
+      width: 32px; height: 32px; flex: none; border-radius: 8px;
       background: linear-gradient(135deg, var(--green), var(--green-light));
       display: flex; align-items: center; justify-content: center;
       font-size: 0.65rem; font-weight: 800; color: #fff;
     }
-    .footer-copy { font-size: 0.82rem; color: var(--text-muted); }
-    .footer-links { display: flex; gap: 28px; }
+    .footer-copy { font-size: 0.82rem; line-height: 1.55; color: var(--text-secondary); }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 12px 28px; }
     .footer-links a { font-size: 0.85rem; color: var(--text-muted); }
     .footer-links a:hover { color: var(--green); }
   </style>
@@ -156,7 +156,7 @@
     </div>
   </nav>
 
-  <div class="legal-page">
+  <main class="legal-page">
     <div class="legal-badge">Legal</div>
     <h1>Terms of Service</h1>
     <p class="effective">Effective Date: April 1, 2026</p>
@@ -237,7 +237,7 @@
       <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/></svg>
       easyday.appstudio@gmail.com
     </a></p>
-  </div>
+  </main>
 
   <footer>
     <div class="container">

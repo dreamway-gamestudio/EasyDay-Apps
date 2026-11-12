@@ -32,7 +32,7 @@ p { line-height: 1.55; }
 .site-header { position: relative; z-index: 2; background: var(--paper); }
 .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 26px; min-height: 78px; }
 .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 850; font-size: 1.08rem; white-space: nowrap; letter-spacing: -.04em; }
-.brand img { flex: none; border-radius: 10px; }
+.brand img { flex: none; object-fit: contain; }
 .main-nav, .header-actions, .actions, .language { display: flex; align-items: center; }
 .main-nav { gap: clamp(15px, 2.6vw, 39px); }
 .main-nav a { font-size: .85rem; font-weight: 650; white-space: nowrap; }
@@ -446,11 +446,11 @@ a.feature-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px #4a55
 .gallery-visual figcaption { color: #3d4f2c; font-size: .85rem; font-weight: 700; }
 
 .download-panel { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 22px; padding: 28px 30px; border-radius: 24px; background: #ebf3d4; }
-.download-logo { border-radius: 16px; }
+.download-logo { object-fit: contain; }
 .download-copy h2 { font-size: clamp(1.5rem, 3vw, 2.5rem); }
 .download-copy p { margin-top: 6px; color: #404934; font-size: .92rem; }
 .site-footer { border-top: 1px solid #e2e3d9; }
-.footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 28px; min-height: 112px; padding-block: 20px; }
+.footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 28px; min-height: 112px; padding-block: 20px calc(20px + env(safe-area-inset-bottom, 0px)); }
 .footer-inner p { margin: 5px 0 0; font-size: .75rem; color: var(--muted); }
 .footer-links { display: flex; flex-wrap: wrap; gap: 10px 20px; font-size: .83rem; font-weight: 650; }
 
@@ -544,7 +544,7 @@ a.feature-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px #4a55
   .gallery-phone { --phone-width: 172px; }
   .download-panel { grid-template-columns: auto 1fr; padding: 18px; border-radius: 20px; }
   .download-panel .actions { grid-column: 1 / -1; }
-  .download-logo { width: 43px; height: 43px; border-radius: 12px; }
+  .download-logo { width: 43px; height: 43px; }
   .footer-inner { flex-direction: column; align-items: flex-start; gap: 15px; }
 }
 

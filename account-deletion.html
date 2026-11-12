@@ -30,7 +30,6 @@
       font-family: var(--font-body);
       background: var(--bg);
       color: var(--text);
-      overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
     a { color: var(--green); text-decoration: none; transition: color 0.25s; }
@@ -45,11 +44,11 @@
     }
     nav .container {
       max-width: 1200px; margin: 0 auto; padding: 0 24px;
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
     }
     .nav-logo {
       display: flex; align-items: center; gap: 10px;
-      font-family: var(--font-display); font-weight: 800; font-size: 1.35rem;
+      font-family: var(--font-display); font-weight: 800; font-size: clamp(1.05rem, 4.5vw, 1.35rem);
       color: var(--text); letter-spacing: -0.03em;
     }
     .nav-logo .logo-img {
@@ -58,12 +57,13 @@
     }
     .nav-back {
       font-size: 0.9rem; font-weight: 500; color: var(--text-muted);
-      display: inline-flex; align-items: center; gap: 6px;
+      display: inline-flex; align-items: center; gap: 6px; text-align: right;
       transition: color 0.25s;
     }
     .nav-back:hover { color: var(--green); }
+    .nav-back svg { flex: none; }
 
-    .legal-page {
+    main.legal-page {
       max-width: 780px;
       margin: 0 auto;
       padding: 130px 24px 100px;
@@ -107,24 +107,24 @@
     }
     .legal-page .contact-link {
       display: inline-flex; align-items: center; gap: 6px;
-      color: var(--green); font-weight: 500;
+      color: var(--green); font-weight: 500; overflow-wrap: anywhere;
     }
 
     footer {
       border-top: 1px solid var(--border-light);
-      padding: 44px 0 32px; background: var(--bg);
+      padding: 44px 0 calc(32px + env(safe-area-inset-bottom, 0px)); background: var(--bg);
     }
     footer .container {
       max-width: 1200px; margin: 0 auto; padding: 0 24px;
       display: flex; justify-content: space-between; align-items: center;
       flex-wrap: wrap; gap: 20px;
     }
-    .footer-left { display: flex; align-items: center; gap: 12px; }
+    .footer-left { display: flex; align-items: center; gap: 12px; min-width: 0; }
     .footer-left .logo-img {
-      width: 32px; height: 32px; border-radius: 0; object-fit: contain;
+      width: 32px; height: 32px; flex: none; object-fit: contain;
     }
-    .footer-copy { font-size: 0.82rem; color: var(--text-muted); }
-    .footer-links { display: flex; gap: 28px; }
+    .footer-copy { font-size: 0.82rem; line-height: 1.55; color: var(--text-secondary); }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 12px 28px; }
     .footer-links a { font-size: 0.85rem; color: var(--text-muted); transition: color 0.25s; }
     .footer-links a:hover { color: var(--green); }
 
@@ -151,7 +151,7 @@
     </div>
   </nav>
 
-  <div class="legal-page">
+  <main class="legal-page">
     <div class="legal-badge">🗑️ User Data</div>
     <h1>Account and Data Deletion</h1>
     <p class="effective">Effective Date: May 16, 2026</p>
@@ -179,7 +179,7 @@
 
     <h2>Processing Time</h2>
     <p>We aim to process deletion requests within 7 days after receiving enough information to identify the account or data.</p>
-  </div>
+  </main>
 
   <footer>
     <div class="container">
