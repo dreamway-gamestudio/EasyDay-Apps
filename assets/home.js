@@ -10,7 +10,7 @@ const russianCopy = {
   navHow: 'Как работает',
   navApp: 'Приложение',
   navSupport: 'Поддержка',
-  getApp: 'Получить приложение',
+  getApp: 'Скачать приложение',
   heroTitle: 'Здоровые привычки —',
   heroAccent: 'каждый день.',
   heroDescription: 'Калории, питание, активность и прогресс в одном приложении.',
@@ -27,8 +27,6 @@ const russianCopy = {
   featureDiary: 'Записывай приёмы пищи и следи за калориями, белками, жирами и углеводами.',
   workoutsTitle: 'Тренировки',
   featureWorkouts: 'Выбирай активность и смотри, как она связана с твоей целью по калориям.',
-  fastingTitle: 'Интервальное голодание',
-  featureFasting: 'Отслеживай время приёмов пищи и интервалы между ними.',
   aiTitle: 'Узнавай калории по фото',
   aiDescription: 'Сфотографируй блюдо и получи оценку калорийности и состава. Её можно использовать для записи в дневнике питания.',
   aiCaption: 'Блюда и их состав в приложении',
@@ -45,9 +43,6 @@ const russianCopy = {
   screenWorkouts: 'Обмен калорий',
   screenDark: 'Тёмная тема',
   downloadTitle: 'Начни с полезных привычек',
-  downloadDescription: 'Calorie Tracker проходит закрытое тестирование в Google Play.',
-  testing: 'Узнать о тестировании Android',
-  testingSubject: 'Тестирование Calorie Tracker',
   contact: 'Связаться с нами',
   privacy: 'Политика конфиденциальности',
   terms: 'Условия использования',
@@ -85,10 +80,9 @@ const screens = {
   },
 };
 
-const copyElements = [...document.querySelectorAll('[data-copy], [data-label], [data-subject]')];
+const copyElements = [...document.querySelectorAll('[data-copy], [data-label]')];
 const englishValues = copyElements.map((element) => {
   if (element.dataset.label) return element.getAttribute('aria-label');
-  if (element.dataset.subject) return 'Calorie Tracker testing';
   return element.textContent;
 });
 
@@ -125,12 +119,10 @@ function updateLanguage() {
     : englishDescription;
 
   copyElements.forEach((element, index) => {
-    const { copy, label, subject } = element.dataset;
-    const value = language === 'ru' ? russianCopy[copy || label || subject] : englishValues[index];
+    const { copy, label } = element.dataset;
+    const value = language === 'ru' ? russianCopy[copy || label] : englishValues[index];
     if (label) {
       element.setAttribute('aria-label', value);
-    } else if (subject) {
-      element.href = 'mailto:easyday.appstudio@gmail.com?subject=' + encodeURIComponent(value);
     } else {
       element.textContent = value;
     }

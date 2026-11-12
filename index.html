@@ -32,7 +32,7 @@
           <a href="./" lang="en" hreflang="en" data-lang="en" aria-current="true" aria-label="English">EN</a>
           <a href="?lang=ru" lang="ru" hreflang="ru" data-lang="ru" aria-label="Русский">RU</a>
         </nav>
-        <a class="button button-lime header-download" href="#download" data-copy="getApp">Get the app</a>
+        <a class="button button-lime header-download" href="#download" data-copy="getApp">Download the app</a>
       </div>
     </div>
   </header>
@@ -45,7 +45,7 @@
           <h1 id="hero-title"><span data-copy="heroTitle">Healthy habits,</span> <span class="underline" data-copy="heroAccent">every day.</span></h1>
           <p class="hero-description" data-copy="heroDescription">Calories, meals, activity, and progress in one app.</p>
           <div class="actions">
-            <a class="button button-dark" href="#download"><span data-copy="getApp">Get the app</span><span aria-hidden="true">↗</span></a>
+            <a class="button button-dark" href="#download"><span data-copy="getApp">Download the app</span><span aria-hidden="true">↗</span></a>
             <a class="button button-outline" href="#how-it-works"><span aria-hidden="true">▷</span><span data-copy="navHow">How it works</span></a>
           </div>
         </div>
@@ -54,10 +54,22 @@
           <div class="leaf leaf-two" aria-hidden="true"></div>
           <div class="leaf leaf-three" aria-hidden="true"></div>
           <div class="phone hero-back">
-            <img data-screen="07-home-dark" src="assets/screen-en-07-home-dark.png" width="1080" height="2424" alt="Home screen with dark mode enabled">
+            <div class="phone-screen">
+              <img data-screen="07-home-dark" src="assets/screen-en-07-home-dark.png" width="1080" height="2424" alt="Home screen with dark mode enabled">
+              <span class="phone-status" aria-hidden="true">
+                <span>9:41</span>
+                <span class="status-symbols"><i class="status-signal"></i><i class="status-wifi"></i><i class="status-battery"></i></span>
+              </span>
+            </div>
           </div>
           <div class="phone hero-front">
-            <img data-screen="01-home-activity" src="assets/screen-en-01-home-activity.png" width="1080" height="2424" alt="Home screen with calories, steps, and water" fetchpriority="high">
+            <div class="phone-screen">
+              <img data-screen="01-home-activity" src="assets/screen-en-01-home-activity.png" width="1080" height="2424" alt="Home screen with calories, steps, and water" fetchpriority="high">
+              <span class="phone-status" aria-hidden="true">
+                <span>9:41</span>
+                <span class="status-symbols"><i class="status-signal"></i><i class="status-wifi"></i><i class="status-battery"></i></span>
+              </span>
+            </div>
           </div>
           <div class="floating float-camera">
             <span class="tile-icon" aria-hidden="true">◎</span>
@@ -81,7 +93,7 @@
         <p data-copy="featuresDescription">Simple tools to log your meals, stay active, and see how your habits change.</p>
       </div>
       <div class="feature-grid">
-        <a class="feature-card feature-camera" href="#how-it-works">
+        <a class="feature-card" href="#how-it-works">
           <span class="feature-icon" aria-hidden="true">◎</span>
           <h3 data-copy="cameraTitle">AI camera</h3>
           <p data-copy="featureCamera">Take a picture of a meal to estimate its calories and nutrients.</p>
@@ -91,24 +103,14 @@
           <span class="feature-icon" aria-hidden="true">≡</span>
           <h3 data-copy="diaryTitle">Food diary</h3>
           <p data-copy="featureDiary">Log meals and keep track of calories, protein, fat, and carbs.</p>
-          <div class="feature-screen feature-diary" aria-hidden="true">
-            <img data-screen="02-home-nutrition" src="assets/screen-en-02-home-nutrition.png" width="1080" height="2424" alt="" loading="lazy">
-          </div>
+          <span class="diary-art" aria-hidden="true"><i></i></span>
         </a>
         <a class="feature-card" href="#app" data-gallery-link="05-calorie-exchange">
-          <span class="feature-icon" aria-hidden="true">↗</span>
+          <span class="feature-icon workout-icon" aria-hidden="true"></span>
           <h3 data-copy="workoutsTitle">Workouts</h3>
           <p data-copy="featureWorkouts">Explore activities and see how they relate to your calorie goals.</p>
-          <div class="feature-screen feature-workouts" aria-hidden="true">
-            <img data-screen="05-calorie-exchange" src="assets/screen-en-05-calorie-exchange.png" width="1080" height="2424" alt="" loading="lazy">
-          </div>
+          <span class="dumbbell-art" aria-hidden="true"><i></i></span>
         </a>
-        <article class="feature-card feature-fasting">
-          <span class="feature-icon" aria-hidden="true">◷</span>
-          <h3 data-copy="fastingTitle">Intermittent fasting</h3>
-          <p data-copy="featureFasting">Keep track of your eating and fasting windows.</p>
-          <span class="clock-art" aria-hidden="true"></span>
-        </article>
       </div>
     </section>
 
@@ -118,11 +120,17 @@
           <p class="ai-label" data-copy="cameraTitle">AI camera</p>
           <h2 id="ai-title" data-copy="aiTitle">See the calories in a photo</h2>
           <p data-copy="aiDescription">Take a photo of your meal and get an estimate of its calories and nutrients. Use it as a starting point for your food diary.</p>
-          <a class="button button-lime" href="#download"><span data-copy="getApp">Get the app</span><span aria-hidden="true">↗</span></a>
+          <a class="button button-lime" href="#download"><span data-copy="getApp">Download the app</span><span aria-hidden="true">↗</span></a>
         </div>
         <figure class="ai-visual">
           <div class="phone ai-phone">
-            <img data-screen="03-personal-diet" src="assets/screen-en-03-personal-diet.png" width="1080" height="2424" alt="Personal food diary with logged foods" loading="lazy">
+            <div class="phone-screen">
+              <img data-screen="03-personal-diet" src="assets/screen-en-03-personal-diet.png" width="1080" height="2424" alt="Personal food diary with logged foods" loading="lazy">
+              <span class="phone-status" aria-hidden="true">
+                <span>9:41</span>
+                <span class="status-symbols"><i class="status-signal"></i><i class="status-wifi"></i><i class="status-battery"></i></span>
+              </span>
+            </div>
           </div>
           <figcaption class="ai-caption">
             <span class="tile-icon" aria-hidden="true">≡</span>
@@ -135,10 +143,22 @@
     <section class="wrap section progress-section" aria-labelledby="progress-title">
       <div class="progress-visual">
         <div class="phone progress-back">
-          <img data-screen="04-individual-diet" src="assets/screen-en-04-individual-diet.png" width="1080" height="2424" alt="Individual diet with progress by food group" loading="lazy">
+          <div class="phone-screen">
+            <img data-screen="04-individual-diet" src="assets/screen-en-04-individual-diet.png" width="1080" height="2424" alt="Individual diet with progress by food group" loading="lazy">
+            <span class="phone-status" aria-hidden="true">
+              <span>9:41</span>
+              <span class="status-symbols"><i class="status-signal"></i><i class="status-wifi"></i><i class="status-battery"></i></span>
+            </span>
+          </div>
         </div>
         <div class="phone progress-front">
-          <img data-screen="06-weekly-stats" src="assets/screen-en-06-weekly-stats.png" width="1080" height="2424" alt="Weekly activity statistics with calories and steps" loading="lazy">
+          <div class="phone-screen">
+            <img data-screen="06-weekly-stats" src="assets/screen-en-06-weekly-stats.png" width="1080" height="2424" alt="Weekly activity statistics with calories and steps" loading="lazy">
+            <span class="phone-status" aria-hidden="true">
+              <span>9:41</span>
+              <span class="status-symbols"><i class="status-signal"></i><i class="status-wifi"></i><i class="status-battery"></i></span>
+            </span>
+          </div>
         </div>
       </div>
       <div class="progress-copy">
@@ -169,7 +189,13 @@
         </div>
         <figure class="gallery-visual">
           <div class="phone gallery-phone">
-            <img id="gallery-image" data-screen="01-home-activity" src="assets/screen-en-01-home-activity.png" width="1080" height="2424" alt="Home screen with calories, steps, and water" loading="lazy">
+            <div class="phone-screen">
+              <img id="gallery-image" data-screen="01-home-activity" src="assets/screen-en-01-home-activity.png" width="1080" height="2424" alt="Home screen with calories, steps, and water" loading="lazy">
+              <span class="phone-status" aria-hidden="true">
+                <span>9:41</span>
+                <span class="status-symbols"><i class="status-signal"></i><i class="status-wifi"></i><i class="status-battery"></i></span>
+              </span>
+            </div>
           </div>
           <figcaption id="gallery-caption" aria-live="polite">Activity</figcaption>
         </figure>
@@ -181,10 +207,10 @@
         <img class="download-logo" src="assets/Icon.png" width="62" height="62" alt="">
         <div class="download-copy">
           <h2 id="download-title" data-copy="downloadTitle">Start building healthier habits</h2>
-          <p data-copy="downloadDescription">Calorie Tracker is currently in closed testing on Google Play.</p>
+          <p>Calorie Tracker · Google Play</p>
         </div>
-        <a class="button button-dark" href="mailto:easyday.appstudio@gmail.com?subject=Calorie%20Tracker%20testing" data-subject="testingSubject">
-          <span data-copy="testing">Ask about Android testing</span><span aria-hidden="true">↗</span>
+        <a class="button button-dark" href="https://play.google.com/store/apps/details?id=com.easyday.healthapp">
+          <span data-copy="getApp">Download the app</span><span aria-hidden="true">↗</span>
         </a>
       </div>
     </section>
