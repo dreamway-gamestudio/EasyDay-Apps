@@ -93,16 +93,3 @@
 }
 :root[data-theme="dark"] .download-copy p { color: #c2d0b8; }
 :root[data-theme="dark"] .site-footer { border-color: #303d2c; }
-
-:root[data-theme="dark"] .legal-page {
-  --bg: #111510;
-  --text: #f1f3e9;
-  --text-secondary: #c5d0bf;
-  --text-muted: #aab8a3;
-  --green: #c5ec8c;
-  --green-light: #9ecf68;
-  --green-pale: #293a23;
-  --border-light: #354330;
-}
-:root[data-theme="dark"] .legal-page nav { background: #111510ed; }
-:root[data-theme="dark"] .legal-page .logo-placeholder { background: linear-gradient(135deg, #2c4424, #507239); }

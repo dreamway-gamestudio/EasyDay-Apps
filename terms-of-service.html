@@ -7,252 +7,137 @@
   <title>Terms of Service — EasyDay App Studio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    :root {
-      --bg: #f7faf7;
-      --bg-white: #ffffff;
-      --text: #1a2e1a;
-      --text-secondary: #4a6a4a;
-      --text-muted: #7a957a;
-      --green: #2e7d32;
-      --green-light: #4caf50;
-      --green-pale: #e8f5e9;
-      --green-glow: rgba(46, 125, 50, 0.15);
-      --border-light: rgba(0,0,0,0.06);
-      --radius: 20px;
-      --font-display: 'Plus Jakarta Sans', sans-serif;
-      --font-body: 'DM Sans', sans-serif;
-    }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: var(--font-body);
-      background: var(--bg);
-      color: var(--text);
-      -webkit-font-smoothing: antialiased;
-    }
-    a { color: var(--green); text-decoration: none; transition: color 0.25s; }
-    a:hover { color: var(--text); }
-
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      padding: 16px 0;
-      background: rgba(247,250,247,0.85);
-      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border-light);
-    }
-    nav .container {
-      max-width: 1200px; margin: 0 auto; padding: 0 24px;
-      display: flex; align-items: center; justify-content: space-between; gap: 12px;
-    }
-    .nav-logo {
-      display: flex; align-items: center; gap: 10px;
-      font-family: var(--font-display); font-weight: 800; font-size: clamp(1.05rem, 4.5vw, 1.35rem);
-      color: var(--text); letter-spacing: -0.03em;
-    }
-    .logo-placeholder {
-      width: 42px; height: 42px; border-radius: 12px;
-      background: linear-gradient(135deg, var(--green), var(--green-light));
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.85rem; font-weight: 800; color: #fff;
-      box-shadow: 0 2px 8px var(--green-glow);
-    }
-    .nav-back {
-      font-size: 0.9rem; font-weight: 500; color: var(--text-muted);
-      display: inline-flex; align-items: center; gap: 6px; text-align: right;
-      transition: color 0.25s;
-    }
-    .nav-back:hover { color: var(--green); }
-    .nav-back svg { flex: none; }
-
-    main.legal-page {
-      max-width: 780px;
-      margin: 0 auto;
-      padding: 130px 24px 100px;
-    }
-    .legal-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--green-pale); border: 1px solid rgba(46,125,50,0.15);
-      border-radius: 50px; padding: 7px 18px;
-      font-size: 0.78rem; font-weight: 700; color: var(--green);
-      margin-bottom: 20px;
-    }
-    .legal-page h1 {
-      font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.8rem);
-      font-weight: 800; letter-spacing: -0.03em; margin-bottom: 8px; color: var(--text);
-    }
-    .legal-page .effective {
-      font-size: 0.9rem; color: var(--text-muted); margin-bottom: 40px;
-    }
-    .legal-page .intro {
-      font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7;
-      margin-bottom: 48px; padding-bottom: 32px;
-      border-bottom: 1px solid var(--border-light);
-    }
-    .legal-page h2 {
-      font-family: var(--font-display); font-size: 1.25rem; font-weight: 700;
-      margin: 40px 0 16px; letter-spacing: -0.02em; color: var(--text);
-    }
-    .legal-page h3 {
-      font-family: var(--font-display); font-size: 1rem; font-weight: 600;
-      margin: 24px 0 12px; color: var(--green);
-    }
-    .legal-page p {
-      font-size: 0.95rem; color: var(--text-secondary); line-height: 1.75; margin-bottom: 16px;
-    }
-    .legal-page ul { list-style: none; margin: 0 0 20px; padding: 0; }
-    .legal-page ul li {
-      font-size: 0.92rem; color: var(--text-secondary); line-height: 1.7;
-      padding: 6px 0 6px 24px; position: relative;
-    }
-    .legal-page ul li::before {
-      content: '';
-      position: absolute; left: 0; top: 14px;
-      width: 6px; height: 6px; border-radius: 50%;
-      background: var(--green-light);
-    }
-    .legal-page .contact-link {
-      display: inline-flex; align-items: center; gap: 6px;
-      color: var(--green); font-weight: 500; overflow-wrap: anywhere;
-    }
-
-    footer {
-      border-top: 1px solid var(--border-light);
-      padding: 44px 0 calc(32px + env(safe-area-inset-bottom, 0px)); background: var(--bg);
-    }
-    footer .container {
-      max-width: 1200px; margin: 0 auto; padding: 0 24px;
-      display: flex; justify-content: space-between; align-items: center;
-      flex-wrap: wrap; gap: 20px;
-    }
-    .footer-left { display: flex; align-items: center; gap: 12px; min-width: 0; }
-    .footer-left .logo-placeholder {
-      width: 32px; height: 32px; flex: none; border-radius: 8px;
-      background: linear-gradient(135deg, var(--green), var(--green-light));
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.65rem; font-weight: 800; color: #fff;
-    }
-    .footer-copy { font-size: 0.82rem; line-height: 1.55; color: var(--text-secondary); }
-    .footer-links { display: flex; flex-wrap: wrap; gap: 12px 28px; }
-    .footer-links a { font-size: 0.85rem; color: var(--text-muted); }
-    .footer-links a:hover { color: var(--green); }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#f8f7f2">
   <script src="assets/theme.js"></script>
+  <link rel="stylesheet" href="assets/home.css">
   <link rel="stylesheet" href="assets/dark.css">
+  <link rel="stylesheet" href="assets/legal.css">
 </head>
 <body class="legal-page">
-
-  <nav>
-    <div class="container">
-      <a href="index.html" class="nav-logo">
-        <div class="logo-placeholder">ED</div>
-        EasyDay
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header legal-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="index.html">
+        <img src="assets/Icon.png" width="38" height="38" alt="">
+        <span>EasyDay Apps</span>
       </a>
-      <a href="index.html" class="nav-back">
-        <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
-        Back to Home
+      <a class="button legal-back" href="index.html">
+        <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+          <path d="M13.5 8h-11m4-4-4 4 4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Back to Home</span>
       </a>
     </div>
-  </nav>
+  </header>
 
-  <main class="legal-page">
-    <div class="legal-badge">Legal</div>
-    <h1>Terms of Service</h1>
-    <p class="effective">Effective Date: April 1, 2026</p>
+  <main class="wrap legal-shell" id="main" aria-labelledby="document-title">
+    <header class="legal-hero">
+      <h1 id="document-title">Terms of Service</h1>
+      <p class="effective">Effective Date: April 1, 2026</p>
+      <nav class="legal-nav" aria-label="Legal documents">
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-of-service.html" aria-current="page">Terms of Service</a>
+        <a href="account-deletion.html">Account Deletion</a>
+      </nav>
+    </header>
 
-    <p class="intro">These Terms of Service ("Terms") govern your use of mobile applications and services (collectively, the "Services") developed and published by EasyDay App Studio (referred to as the "Company", "we", "us", or "our"). By downloading, installing, or using any of our Services, you agree to be bound by these Terms.</p>
+    <article class="legal-copy" aria-labelledby="document-title">
+      <p class="intro">These Terms of Service ("Terms") govern your use of mobile applications and services (collectively, the "Services") developed and published by EasyDay App Studio (referred to as the "Company", "we", "us", or "our"). By downloading, installing, or using any of our Services, you agree to be bound by these Terms.</p>
 
-    <h2>1. Acceptance of Terms</h2>
-    <p>By accessing or using our Services, you confirm that you have read, understood, and agree to be bound by these Terms. If you do not agree with any part of these Terms, you must immediately stop using the Services.</p>
+      <h2>1. Acceptance of Terms</h2>
+      <p>By accessing or using our Services, you confirm that you have read, understood, and agree to be bound by these Terms. If you do not agree with any part of these Terms, you must immediately stop using the Services.</p>
 
-    <h2>2. Changes to Terms</h2>
-    <p>We may update or modify these Terms at any time. Changes will be effective when posted. Your continued use of the Services after changes are posted means you accept the revised Terms.</p>
+      <h2>2. Changes to Terms</h2>
+      <p>We may update or modify these Terms at any time. Changes will be effective when posted. Your continued use of the Services after changes are posted means you accept the revised Terms.</p>
 
-    <h2>3. Use of the Services</h2>
-    <p>You agree to use the Services only for lawful purposes and in a manner that does not:</p>
-    <ul>
-      <li>Violate any applicable laws or regulations</li>
-      <li>Infringe the rights of others</li>
-      <li>Interfere with or disrupt the Services or servers</li>
-      <li>Attempt to gain unauthorized access to any part of the Services</li>
-      <li>Use the Services for any fraudulent or malicious activity</li>
-    </ul>
+      <h2>3. Use of the Services</h2>
+      <p>You agree to use the Services only for lawful purposes and in a manner that does not:</p>
+      <ul>
+        <li>Violate any applicable laws or regulations</li>
+        <li>Infringe the rights of others</li>
+        <li>Interfere with or disrupt the Services or servers</li>
+        <li>Attempt to gain unauthorized access to any part of the Services</li>
+        <li>Use the Services for any fraudulent or malicious activity</li>
+      </ul>
 
-    <h2>4. Intellectual Property</h2>
-    <p>All content, design, graphics, logos, code, and other materials within the Services are owned by EasyDay App Studio or its licensors and are protected by intellectual property laws.</p>
-    <p>You may not:</p>
-    <ul>
-      <li>Copy, modify, distribute, or reproduce any part of the Services</li>
-      <li>Reverse-engineer, decompile, or disassemble the Services</li>
-      <li>Use our branding or trademarks without prior written consent</li>
-    </ul>
+      <h2>4. Intellectual Property</h2>
+      <p>All content, design, graphics, logos, code, and other materials within the Services are owned by EasyDay App Studio or its licensors and are protected by intellectual property laws.</p>
+      <p>You may not:</p>
+      <ul>
+        <li>Copy, modify, distribute, or reproduce any part of the Services</li>
+        <li>Reverse-engineer, decompile, or disassemble the Services</li>
+        <li>Use our branding or trademarks without prior written consent</li>
+      </ul>
 
-    <h2>5. User Content</h2>
-    <p>Some of our Services may allow you to input, create, or submit content. You retain ownership of your content but grant us a non-exclusive, royalty-free license to use, display, and process it as necessary to operate the Services.</p>
-    <p>You are solely responsible for any content you submit and must ensure it complies with applicable laws.</p>
+      <h2>5. User Content</h2>
+      <p>Some of our Services may allow you to input, create, or submit content. You retain ownership of your content but grant us a non-exclusive, royalty-free license to use, display, and process it as necessary to operate the Services.</p>
+      <p>You are solely responsible for any content you submit and must ensure it complies with applicable laws.</p>
 
-    <h2>6. In-App Purchases and Subscriptions</h2>
-    <p>Certain features may be available through in-app purchases or subscriptions. By making a purchase, you agree to the pricing and payment terms presented at the time of purchase.</p>
-    <ul>
-      <li>All purchases are processed through the platform's app store (Google Play or Apple App Store)</li>
-      <li>Refund policies are governed by the respective app store's terms</li>
-      <li>Subscriptions auto-renew unless canceled before the renewal date</li>
-    </ul>
+      <h2>6. In-App Purchases and Subscriptions</h2>
+      <p>Certain features may be available through in-app purchases or subscriptions. By making a purchase, you agree to the pricing and payment terms presented at the time of purchase.</p>
+      <ul>
+        <li>All purchases are processed through the platform's app store (Google Play or Apple App Store)</li>
+        <li>Refund policies are governed by the respective app store's terms</li>
+        <li>Subscriptions auto-renew unless canceled before the renewal date</li>
+      </ul>
 
-    <h2>7. Advertising</h2>
-    <p>Our Services may display third-party advertisements. These ads may be personalized based on your usage and preferences. By using the Services, you acknowledge and accept the presence of advertising.</p>
+      <h2>7. Advertising</h2>
+      <p>Our Services may display third-party advertisements. These ads may be personalized based on your usage and preferences. By using the Services, you acknowledge and accept the presence of advertising.</p>
 
-    <h2>8. Privacy</h2>
-    <p>Your use of the Services is also governed by our <a href="privacy-policy.html">Privacy Policy</a>, which describes how we collect, use, and protect your information.</p>
+      <h2>8. Privacy</h2>
+      <p>Your use of the Services is also governed by our <a href="privacy-policy.html">Privacy Policy</a>, which describes how we collect, use, and protect your information.</p>
 
-    <h2>9. Disclaimers</h2>
-    <p>The Services are provided "AS IS" and "AS AVAILABLE" without warranties of any kind, express or implied. We do not guarantee that the Services will be:</p>
-    <ul>
-      <li>Uninterrupted or error-free</li>
-      <li>Free from harmful components</li>
-      <li>Suitable for your specific requirements</li>
-    </ul>
+      <h2>9. Disclaimers</h2>
+      <p>The Services are provided "AS IS" and "AS AVAILABLE" without warranties of any kind, express or implied. We do not guarantee that the Services will be:</p>
+      <ul>
+        <li>Uninterrupted or error-free</li>
+        <li>Free from harmful components</li>
+        <li>Suitable for your specific requirements</li>
+      </ul>
 
-    <h2>10. Limitation of Liability</h2>
-    <p>To the fullest extent permitted by law, EasyDay App Studio shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising out of or related to your use of the Services, including but not limited to:</p>
-    <ul>
-      <li>Loss of data</li>
-      <li>Loss of revenue or profits</li>
-      <li>Unauthorized access to your information</li>
-    </ul>
+      <h2>10. Limitation of Liability</h2>
+      <p>To the fullest extent permitted by law, EasyDay App Studio shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising out of or related to your use of the Services, including but not limited to:</p>
+      <ul>
+        <li>Loss of data</li>
+        <li>Loss of revenue or profits</li>
+        <li>Unauthorized access to your information</li>
+      </ul>
 
-    <h2>11. Termination</h2>
-    <p>We reserve the right to suspend or terminate your access to the Services at any time, without prior notice, if we believe you have violated these Terms or engaged in harmful behavior.</p>
+      <h2>11. Termination</h2>
+      <p>We reserve the right to suspend or terminate your access to the Services at any time, without prior notice, if we believe you have violated these Terms or engaged in harmful behavior.</p>
 
-    <h2>12. Governing Law</h2>
-    <p>These Terms shall be governed by and interpreted in accordance with applicable laws, without regard to conflict of law principles.</p>
+      <h2>12. Governing Law</h2>
+      <p>These Terms shall be governed by and interpreted in accordance with applicable laws, without regard to conflict of law principles.</p>
 
-    <h2>13. Severability</h2>
-    <p>If any provision of these Terms is found to be unenforceable, the remaining provisions will continue in full force and effect.</p>
+      <h2>13. Severability</h2>
+      <p>If any provision of these Terms is found to be unenforceable, the remaining provisions will continue in full force and effect.</p>
 
-    <h2>14. Contact Us</h2>
-    <p>If you have any questions about these Terms of Service, please contact us:</p>
-    <p><a href="mailto:easyday.appstudio@gmail.com" class="contact-link">
-      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/></svg>
-      easyday.appstudio@gmail.com
-    </a></p>
+      <h2>14. Contact Us</h2>
+      <p>If you have any questions about these Terms of Service, please contact us:</p>
+      <p><a href="mailto:easyday.appstudio@gmail.com" class="contact-link">
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/></svg>
+        easyday.appstudio@gmail.com
+      </a></p>
+    </article>
   </main>
 
-  <footer>
-    <div class="container">
-      <div class="footer-left">
-        <div class="logo-placeholder">ED</div>
-        <span class="footer-copy">&copy; 2026 EasyDay App Studio. All rights reserved.</span>
+  <footer class="site-footer" id="support">
+    <div class="wrap footer-inner">
+      <div>
+        <a class="brand" href="index.html">
+          <img src="assets/Icon.png" width="32" height="32" alt="">
+          <span>EasyDay Apps</span>
+        </a>
+        <p>&copy; 2026 EasyDay App Studio. All rights reserved.</p>
       </div>
-      <div class="footer-links">
+      <nav class="footer-links" aria-label="Support and legal">
+        <a href="mailto:easyday.appstudio@gmail.com">Contact</a>
         <a href="privacy-policy.html">Privacy Policy</a>
         <a href="terms-of-service.html">Terms of Service</a>
         <a href="account-deletion.html">Account Deletion</a>
-        <a href="mailto:easyday.appstudio@gmail.com">Contact</a>
-      </div>
+      </nav>
     </div>
   </footer>
-
 </body>
 </html>
