@@ -349,10 +349,10 @@ a.feature-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px #4a55
 }
 .ai-visual img {
   position: absolute;
-  bottom: -14%;
+  bottom: -24%;
   left: 50%;
-  width: calc(100% + 16px);
-  height: 114%;
+  width: calc(108% + 16px);
+  height: 124%;
   max-width: none;
   object-fit: contain;
   object-position: center bottom;
@@ -360,7 +360,7 @@ a.feature-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px #4a55
 }
 .ai-demo-arrow { width: 100%; height: auto; color: #cff478; }
 .ai-result {
-  --result-track: #e5e6db;
+  --result-track: #e8eaee;
   position: relative;
   display: grid;
   gap: 13px;
@@ -394,9 +394,9 @@ a.feature-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px #4a55
 .ai-macro dd strong { min-width: 3em; text-align: end; white-space: nowrap; }
 .ai-macro-bar { flex: 1; height: 6px; border-radius: 999px; background: var(--result-track); }
 .ai-macro-bar::before { content: ""; display: block; width: var(--portion); height: 100%; border-radius: inherit; background: var(--macro-color); }
-.ai-protein { --macro-color: #86ba43; --portion: 62%; }
-.ai-fat { --macro-color: #e6b635; --portion: 18%; }
-.ai-carbs { --macro-color: #ad83df; --portion: 100%; }
+.ai-protein { --macro-color: #ff5c61; --portion: 62%; }
+.ai-fat { --macro-color: #77d500; --portion: 18%; }
+.ai-carbs { --macro-color: #ffa700; --portion: 100%; }
 
 .progress-section { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 30px; }
 .progress-visual {
