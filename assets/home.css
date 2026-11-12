@@ -141,10 +141,10 @@ p { line-height: 1.55; }
   content: "";
   position: absolute;
   z-index: 1;
-  inset-block-start: 1.27%;
+  inset-block-start: 0.84%;
   inset-inline-start: 50%;
   width: 24%;
-  height: 2.66%;
+  height: 2.85%;
   border-radius: 999px;
   transform: translateX(-50%);
   background: radial-gradient(circle at 82% 50%, #22293a 0, #121621 6%, transparent 9%), #050607;
