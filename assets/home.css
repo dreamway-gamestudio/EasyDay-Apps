@@ -34,7 +34,8 @@ p { line-height: 1.55; }
 .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 850; font-size: 1.08rem; white-space: nowrap; letter-spacing: -.04em; }
 .brand img { flex: none; object-fit: contain; }
 .header-brand { justify-self: start; }
-.brand-mark { position: relative; flex: none; width: 38px; aspect-ratio: 1; overflow: hidden; border-radius: 26%; }
+.brand-mark { position: relative; flex: none; width: 32px; aspect-ratio: 1; overflow: hidden; border-radius: 26%; }
+.header-brand .brand-mark { width: 38px; }
 .brand-mark img { position: absolute; inset: -11%; width: 122%; height: 122%; max-width: none; }
 .brand-app { padding-inline-start: 10px; border-inline-start: 1px solid var(--line); color: var(--muted); font-size: .83em; font-weight: 700; letter-spacing: -.02em; }
 .main-nav, .header-actions, .actions, .language { display: flex; align-items: center; }
@@ -509,7 +510,7 @@ a.feature-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px #4a55
 @media (max-width: 660px) {
   :root { --wrap: calc(100% - 36px); }
   .brand { font-size: 1rem; }
-  .brand-mark { width: 32px; }
+  .header-brand .brand-mark { width: 32px; }
   .main-nav a { font-size: .71rem; }
   .hero-grid { grid-template-columns: 1fr; height: auto; }
   .hero-copy { padding-block: 30px 17px; }
