@@ -10,7 +10,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="assets/theme.js"></script>
   <link rel="stylesheet" href="assets/home.css">
+  <link rel="stylesheet" href="assets/dark.css">
   <script src="assets/home.js" defer></script>
 </head>
 <body>
@@ -48,6 +50,10 @@
           <a href="./" lang="en" hreflang="en" data-lang="en" aria-current="true" aria-label="English">EN</a>
           <a href="?lang=ru" lang="ru" hreflang="ru" data-lang="ru" aria-label="Русский">RU</a>
         </nav>
+        <button type="button" class="theme-toggle" role="switch" aria-checked="false" aria-label="Dark site theme" data-label="siteTheme" hidden>
+          <span class="theme-sun" aria-hidden="true">☀︎</span>
+          <span class="theme-moon" aria-hidden="true"></span>
+        </button>
         <a class="button button-lime header-download" href="#download" data-copy="getApp">Download the app</a>
       </div>
     </div>
@@ -141,7 +147,7 @@
         <figure class="ai-visual">
           <div class="phone ai-phone">
             <div class="phone-screen">
-              <img data-screen="03-personal-diet" src="assets/screen-en-03-personal-diet.png" width="1080" height="2424" alt="Personal food diary with logged foods" loading="lazy">
+              <img data-screen="03-personal-diet" data-theme-screen src="assets/screen-en-03-personal-diet.png" width="1080" height="2424" alt="Personal food diary with logged foods" loading="lazy">
               <span class="phone-status" aria-hidden="true">
                 <span>9:41</span>
                 <svg class="status-symbols" viewBox="0 0 55 14"><use href="#status-icons"/></svg>
@@ -160,7 +166,7 @@
       <div class="progress-visual">
         <div class="phone progress-back">
           <div class="phone-screen">
-            <img data-screen="04-individual-diet" src="assets/screen-en-04-individual-diet.png" width="1080" height="2424" alt="Individual diet with progress by food group" loading="lazy">
+            <img data-screen="04-individual-diet" data-theme-screen src="assets/screen-en-04-individual-diet.png" width="1080" height="2424" alt="Individual diet with progress by food group" loading="lazy">
             <span class="phone-status" aria-hidden="true">
               <span>9:41</span>
               <svg class="status-symbols" viewBox="0 0 55 14"><use href="#status-icons"/></svg>
@@ -169,7 +175,7 @@
         </div>
         <div class="phone progress-front">
           <div class="phone-screen">
-            <img data-screen="06-weekly-stats" src="assets/screen-en-06-weekly-stats.png" width="1080" height="2424" alt="Weekly activity statistics with calories and steps" loading="lazy">
+            <img data-screen="06-weekly-stats" data-theme-screen src="assets/screen-en-06-weekly-stats.png" width="1080" height="2424" alt="Weekly activity statistics with calories and steps" loading="lazy">
             <span class="phone-status" aria-hidden="true">
               <span>9:41</span>
               <svg class="status-symbols" viewBox="0 0 55 14"><use href="#status-icons"/></svg>
@@ -206,7 +212,7 @@
         <figure class="gallery-visual">
           <div class="phone gallery-phone">
             <div class="phone-screen">
-              <img id="gallery-image" data-screen="01-home-activity" src="assets/screen-en-01-home-activity.png" width="1080" height="2424" alt="Home screen with calories, steps, and water" loading="lazy">
+              <img id="gallery-image" data-screen="01-home-activity" data-theme-screen src="assets/screen-en-01-home-activity.png" width="1080" height="2424" alt="Home screen with calories, steps, and water" loading="lazy">
               <span class="phone-status" aria-hidden="true">
                 <span>9:41</span>
                 <svg class="status-symbols" viewBox="0 0 55 14"><use href="#status-icons"/></svg>

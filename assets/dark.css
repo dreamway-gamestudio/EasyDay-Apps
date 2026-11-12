@@ -1,0 +1,78 @@
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #111510;
+  --ink: #f1f3e9;
+  --muted: #b5beb0;
+  --line: #374333;
+  --accent: #c5ec8c;
+  --surface: #20291d;
+}
+
+:root[data-theme="dark"] :focus-visible { outline-color: var(--accent); }
+:root[data-theme="dark"] .skip-link { background: var(--surface); }
+:root[data-theme="dark"] .site-header { box-shadow: inset 0 -1px var(--line); }
+:root[data-theme="dark"] .language a[aria-current] { background: #283a24; color: var(--accent); }
+:root[data-theme="dark"] .theme-toggle { background: #1b2219; }
+
+/* Keep the opening composition and its two app previews identical in both themes. */
+:root[data-theme="dark"] .hero { color-scheme: light; --paper: #faf9f5; color: #161916; }
+:root[data-theme="dark"] .hero :focus-visible { outline-color: #527913; }
+
+:root[data-theme="dark"] .feature-card {
+  box-shadow: inset 0 0 0 1px #394633;
+  background: radial-gradient(ellipse at 95% 100%, #2b4222 0%, transparent 61%), linear-gradient(145deg, #232b20, #1a2119);
+}
+:root[data-theme="dark"] .feature-card:hover { box-shadow: inset 0 0 0 1px #71905a, 0 14px 30px #05090360; }
+:root[data-theme="dark"] .feature-card p { color: var(--muted); }
+:root[data-theme="dark"] .feature-icon { background: #cced94; color: #192313; }
+
+:root[data-theme="dark"] .ai-panel {
+  box-shadow: inset 0 0 0 1px #46583b;
+  background: radial-gradient(ellipse at 72% 108%, #3e5929, transparent 68%), linear-gradient(135deg, #20281c, #171e16);
+}
+:root[data-theme="dark"] .ai-label { background: #2e4126; border-color: #567043; color: #dbf2b9; }
+:root[data-theme="dark"] .ai-copy > p:not(.ai-label) { color: #c7d1bd; }
+:root[data-theme="dark"] .ai-caption { color: var(--ink); background: #243122; box-shadow: inset 0 0 0 1px #4e6145, 0 12px 30px #080b0780; }
+:root[data-theme="dark"] .ai-caption small { color: #bfccba; }
+:root[data-theme="dark"] .ai-caption .tile-icon { background: #3d5532; color: #e2f6bd; }
+
+:root[data-theme="dark"] .progress-visual {
+  box-shadow: inset 0 0 0 1px #3e5037;
+  background: radial-gradient(ellipse at 38% 85%, #3b512c, transparent 72%), #1b251b;
+}
+:root[data-theme="dark"] .progress-details div { background: var(--surface); box-shadow: inset 0 0 0 1px #364832; }
+:root[data-theme="dark"] .progress-details span { color: var(--accent); }
+
+:root[data-theme="dark"] .app-panel {
+  border-color: #43543a;
+  background: radial-gradient(ellipse at 82% 64%, #334b29, transparent 65%), #1c261b;
+}
+:root[data-theme="dark"] .gallery-options button { border-color: #465640; background: #172117; color: #e4eadd; }
+:root[data-theme="dark"] .gallery-options button:hover { border-color: #a3bf84; }
+:root[data-theme="dark"] .gallery-options button[aria-pressed="true"] { border-color: #d0eba9; background: #c6e69a; color: #182314; }
+:root[data-theme="dark"] .gallery-visual figcaption { color: #d7e8c9; }
+:root[data-theme="dark"] :is(.ai-visual, .progress-visual, .gallery-visual) .phone {
+  border-color: #929b8b #586553 #363d33 #707c68;
+  box-shadow: inset 0 0 0 1px #ffffff38, 0 22px 42px #0008, 0 2px 7px #0007;
+}
+
+:root[data-theme="dark"] .download-panel {
+  box-shadow: inset 0 0 0 1px #4a613a;
+  background: radial-gradient(ellipse at 85% 70%, #384d2a, transparent 70%), #24321f;
+}
+:root[data-theme="dark"] .download-copy p { color: #c2d0b8; }
+:root[data-theme="dark"] .download-panel .button { color: #17210e; background: #caec92; }
+:root[data-theme="dark"] .site-footer { border-color: #303d2c; }
+
+:root[data-theme="dark"] .legal-page {
+  --bg: #111510;
+  --text: #f1f3e9;
+  --text-secondary: #c5d0bf;
+  --text-muted: #aab8a3;
+  --green: #c5ec8c;
+  --green-light: #9ecf68;
+  --green-pale: #293a23;
+  --border-light: #354330;
+}
+:root[data-theme="dark"] .legal-page nav { background: #111510ed; }
+:root[data-theme="dark"] .legal-page .logo-placeholder { background: linear-gradient(135deg, #2c4424, #507239); }

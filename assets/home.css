@@ -41,6 +41,32 @@ p { line-height: 1.55; }
 .language { gap: 2px; border: 1px solid var(--line); border-radius: 24px; padding: 3px; }
 .language a { padding: 6px 9px; border-radius: 20px; font-size: .73rem; font-weight: 800; }
 .language a[aria-current] { background: #e4efcf; color: #2f4811; }
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  flex: none;
+  padding: 3px;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+.theme-toggle[hidden] { display: none; }
+.theme-toggle span { display: grid; width: 26px; height: 26px; place-items: center; border-radius: 50%; }
+.theme-sun { font-size: 1.03rem; line-height: 1; }
+.theme-moon::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  box-shadow: -3px 2px 0 0 currentColor;
+  transform: translate(2px, -1px);
+}
+.theme-toggle[aria-checked="false"] .theme-sun { background: #e4efcf; color: #2f4811; }
+.theme-toggle[aria-checked="true"] .theme-moon { background: #d2edaa; color: #172017; }
+.theme-toggle:hover { border-color: #7e9d54; }
 .button {
   display: inline-flex;
   justify-content: center;
@@ -164,7 +190,7 @@ p { line-height: 1.55; }
   font: 750 clamp(6px, 5.6cqw, 13px) / 1 -apple-system, BlinkMacSystemFont, Inter, sans-serif;
   pointer-events: none;
 }
-.phone-screen:has([data-screen="07-home-dark"]) .phone-status { color: #fff; background: #181920; }
+.phone-screen:has([data-screen="07-home-dark"], [data-dark-screen]) .phone-status { color: #fff; background: #181920; }
 .status-definitions { position: absolute; }
 .status-symbols { display: block; flex: none; width: 3.9em; height: 1em; }
 .hero-stage .phone { position: absolute; }
@@ -357,9 +383,12 @@ a.feature-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px #4a55
   .float-water { top: 248px; }
 }
 
+@media (max-width: 1000px) {
+  .header-download { display: none; }
+}
+
 @media (max-width: 880px) {
   :root { --wrap: calc(100% - 44px); }
-  .header-download { display: none; }
   .hero-stage, .hero-grid { height: 455px; }
   .hero-copy { padding-bottom: 35px; }
   .hero h1 { font-size: clamp(2.85rem, 6.5vw, 3.8rem); }
@@ -442,6 +471,11 @@ a.feature-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px #4a55
 
 @media (max-width: 355px) {
   :root { --wrap: calc(100% - 28px); }
+  .header-inner { column-gap: 8px; }
+  .header-actions { gap: 5px; }
+  .brand { gap: 8px; }
+  .language a { padding-inline: 6px; }
+  .theme-toggle span { width: 23px; height: 23px; }
   .main-nav a { font-size: .68rem; }
   .floating .tile-icon { display: none; }
   .hero h1 { font-size: 2.55rem; }

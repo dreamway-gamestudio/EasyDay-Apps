@@ -4,6 +4,7 @@ const russianCopy = {
   skip: 'Перейти к содержимому',
   navigation: 'Основная навигация',
   language: 'Язык сайта',
+  siteTheme: 'Тёмная тема сайта',
   gallery: 'Скриншоты приложения',
   footer: 'Поддержка и документы',
   navFeatures: 'Возможности',
@@ -87,16 +88,22 @@ const englishValues = copyElements.map((element) => {
 });
 
 const languageLinks = [...document.querySelectorAll('[data-lang]')];
+const themeToggle = document.querySelector('.theme-toggle');
 const galleryButtons = [...document.querySelectorAll('[data-gallery]')];
+const galleryDarkDemo = document.querySelector('[data-gallery="07-home-dark"]');
 const galleryImage = document.getElementById('gallery-image');
 const galleryCaption = document.getElementById('gallery-caption');
+const showcaseImages = document.querySelectorAll('[data-screen]:not(#gallery-image)');
 const description = document.querySelector('meta[name="description"]');
 const englishDescription = description.content;
 let language = 'en';
+let theme = 'light';
 
 function updateImage(image) {
   const screen = image.dataset.screen;
-  const source = 'assets/screen-' + language + '-' + screen + '.png';
+  const usesDarkSet = theme === 'dark' && image.hasAttribute('data-theme-screen') && screen !== '07-home-dark';
+  const source = `assets/screen-${language}-${usesDarkSet ? 'dark-' : ''}${screen}.png`;
+  image.toggleAttribute('data-dark-screen', usesDarkSet);
   if (image.getAttribute('src') !== source) image.src = source;
   if (!image.closest('[aria-hidden="true"]')) image.alt = screens[screen][language];
 }
@@ -111,9 +118,13 @@ function showScreen(screen) {
   galleryCaption.textContent = selected.textContent;
 }
 
-function updateLanguage() {
+function updatePage() {
   language = new URLSearchParams(window.location.search).get('lang') === 'ru' ? 'ru' : 'en';
+  theme = siteTheme.read();
+  siteTheme.apply(theme);
   document.documentElement.lang = language;
+  themeToggle.setAttribute('aria-checked', String(theme === 'dark'));
+  galleryDarkDemo.hidden = theme === 'dark';
   description.content = language === 'ru'
     ? 'Следи за калориями, планируй питание и отслеживай активность с Calorie Tracker от EasyDay Apps.'
     : englishDescription;
@@ -129,6 +140,11 @@ function updateLanguage() {
   });
 
   for (const link of languageLinks) {
+    const url = new URL(window.location.href);
+    if (link.dataset.lang === 'ru') url.searchParams.set('lang', 'ru');
+    else url.searchParams.delete('lang');
+    link.href = url.href;
+
     if (link.dataset.lang === language) {
       link.setAttribute('aria-current', 'true');
     } else {
@@ -136,8 +152,10 @@ function updateLanguage() {
     }
   }
 
-  document.querySelectorAll('[data-screen]').forEach(updateImage);
-  showScreen(galleryImage.dataset.screen);
+  showcaseImages.forEach(updateImage);
+  const selectedScreen = galleryImage.dataset.screen;
+  showScreen(theme === 'dark' && selectedScreen === '07-home-dark' ? '01-home-activity' : selectedScreen);
+  siteTheme.updatePageLinks();
 }
 
 for (const link of languageLinks) {
@@ -145,16 +163,19 @@ for (const link of languageLinks) {
     if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     event.preventDefault();
     if (link.dataset.lang === language) return;
-    const url = new URL(window.location.href);
-    if (link.dataset.lang === 'ru') {
-      url.searchParams.set('lang', 'ru');
-    } else {
-      url.searchParams.delete('lang');
-    }
-    history.pushState(null, '', url);
-    updateLanguage();
+    history.pushState(null, '', link.href);
+    updatePage();
   });
 }
+
+themeToggle.addEventListener('click', () => {
+  const nextTheme = theme === 'dark' ? 'light' : 'dark';
+  const url = new URL(window.location.href);
+  url.searchParams.set('theme', nextTheme);
+  history.replaceState(null, '', url);
+  siteTheme.save(nextTheme);
+  updatePage();
+});
 
 for (const button of galleryButtons) {
   button.addEventListener('click', () => showScreen(button.dataset.gallery));
@@ -164,5 +185,6 @@ for (const link of document.querySelectorAll('[data-gallery-link]')) {
   link.addEventListener('click', () => showScreen(link.dataset.galleryLink));
 }
 
-window.addEventListener('popstate', updateLanguage);
-updateLanguage();
+window.addEventListener('popstate', updatePage);
+updatePage();
+themeToggle.hidden = false;
