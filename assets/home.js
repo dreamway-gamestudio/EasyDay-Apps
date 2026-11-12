@@ -30,7 +30,8 @@ const russianCopy = {
   featureWorkouts: 'Выбирай активность и смотри, как она связана с твоей целью по калориям.',
   aiTitle: 'Узнавай калории по фото',
   aiDescription: 'Сфотографируй блюдо и получи оценку калорийности и состава. Её можно использовать для записи в дневнике питания.',
-  aiCaption: 'Блюда и их состав в приложении',
+  aiCaptureTitle: 'Фото блюда',
+  aiCaption: 'Наведи камеру на блюдо',
   progressTitle: 'Следи за прогрессом',
   progressDescription: 'Смотри, как меняются активность, калорийность рациона и вес, чтобы видеть результат своих привычек.',
   progressActivity: 'Активные дни',
@@ -79,6 +80,11 @@ const screens = {
     en: 'Home screen with dark mode enabled',
     ru: 'Главный экран в тёмной теме',
   },
+  '08-ai-camera': {
+    en: 'AI camera framing a meal of salmon, rice, and vegetables',
+    ru: 'ИИ-камера с блюдом из лосося, риса и овощей в рамке',
+    extension: 'jpg',
+  },
 };
 
 const copyElements = [...document.querySelectorAll('[data-copy], [data-label]')];
@@ -102,7 +108,8 @@ let theme = 'light';
 function updateImage(image) {
   const screen = (theme === 'dark' && image.dataset.darkHeroScreen) || image.dataset.screen;
   const usesDarkSet = theme === 'dark' && image.hasAttribute('data-theme-screen') && screen !== '07-home-dark';
-  const source = `assets/screen-${language}-${usesDarkSet ? 'dark-' : ''}${screen}.png`;
+  const extension = screens[screen].extension ?? 'png';
+  const source = `assets/screen-${language}-${usesDarkSet ? 'dark-' : ''}${screen}.${extension}`;
   image.toggleAttribute('data-dark-screen', usesDarkSet || screen === '07-home-dark');
   if (image.getAttribute('src') !== source) image.src = source;
   if (!image.closest('[aria-hidden="true"]')) image.alt = screens[screen][language];
