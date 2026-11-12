@@ -140,8 +140,6 @@ p { line-height: 1.55; }
   color: #fff;
   box-shadow: 0 5px 14px #2223;
 }
-.store-badge[aria-disabled="true"] { opacity: .76; }
-.store-badge[aria-disabled="true"]:hover { transform: none; }
 .store-logo { width: 28px; height: 29px; flex: 0 0 28px; object-fit: contain; }
 .store-badge-copy { display: grid; gap: 2px; text-align: start; white-space: nowrap; }
 .store-badge-copy span { font-size: .66rem; font-weight: 500; line-height: 1.1; }
