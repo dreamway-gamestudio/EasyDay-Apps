@@ -26,7 +26,7 @@
 }
 :root[data-theme="dark"] .hero-label { background: #253b23; color: #d4efaa; box-shadow: inset 0 0 0 1px #45653b; }
 :root[data-theme="dark"] .hero-description { color: #ccd7c4; }
-:root[data-theme="dark"] .hero .underline::after { background-color: #bce875; }
+:root[data-theme="dark"] .hero .underline::after { border-top-color: #bce875; }
 :root[data-theme="dark"] .store-badge { border-color: #617158; }
 :root[data-theme="dark"] a.store-badge:hover { border-color: #b2cd94; }
 :root[data-theme="dark"] .hero-back { border-color: #bdc9b9 #788773 #52604e #a3b09d; }
