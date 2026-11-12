@@ -408,8 +408,8 @@ a.feature-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px #4a55
   background: radial-gradient(ellipse at 30% 91%, #dbeea5, transparent 70%), #f3f1e8;
 }
 .progress-visual .phone { position: absolute; --phone-width: 51cqw; transform-origin: 50% 40%; }
-.progress-back { left: 2%; top: 4%; transform: rotate(-5deg); }
-.progress-front { left: 49%; top: 3%; transform: rotate(2deg); }
+.progress-back { left: 4%; top: 4%; transform: rotate(-5deg); }
+.progress-front { left: 47%; top: 3%; transform: rotate(2deg); }
 .progress-copy p, .app-copy > p { margin-top: 14px; max-width: 505px; color: var(--muted); }
 .progress-details { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; margin-top: 22px; }
 .progress-details div { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; min-width: 0; padding: 12px; border-radius: 15px; background: #eff3e3; }
