@@ -53,6 +53,7 @@ const russianCopy = {
   screenDiary: 'Дневник питания',
   screenDiet: 'Индивидуальный рацион',
   screenWorkouts: 'Обмен калорий',
+  screenWeight: 'Контроль веса',
   downloadTitle: 'Начни с полезных привычек',
   contact: 'Связаться с нами',
   privacy: 'Политика конфиденциальности',
