@@ -58,9 +58,6 @@
 }
 :root[data-theme="dark"] .ai-label { background: #2e4126; border-color: #567043; color: #dbf2b9; }
 :root[data-theme="dark"] .ai-copy > p:not(.ai-label) { color: #c7d1bd; }
-:root[data-theme="dark"] .ai-caption { color: var(--ink); background: #243122; box-shadow: inset 0 0 0 1px #4e6145, 0 12px 30px #080b0780; }
-:root[data-theme="dark"] .ai-caption small { color: #bfccba; }
-:root[data-theme="dark"] .ai-caption .tile-icon { background: #3d5532; color: #e2f6bd; }
 
 :root[data-theme="dark"] .progress-visual {
   box-shadow: inset 0 0 0 1px #3e5037;

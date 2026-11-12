@@ -253,8 +253,8 @@ p { line-height: 1.55; }
   border: 1px solid #fff;
   box-shadow: 0 9px 22px #3a4a2121;
 }
-.floating strong, .ai-caption strong { display: block; font-size: .83rem; letter-spacing: -.025em; line-height: 1.25; }
-.floating small, .ai-caption small { display: block; margin-top: 4px; color: #47523d; font-size: .73rem; line-height: 1.25; }
+.floating strong { display: block; font-size: .83rem; letter-spacing: -.025em; line-height: 1.25; }
+.floating small { display: block; margin-top: 4px; color: #47523d; font-size: .73rem; line-height: 1.25; }
 .float-camera { top: 109px; right: 1%; transform: rotate(-9deg); }
 .float-progress {
   top: 198px;
@@ -334,26 +334,20 @@ a.feature-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px #4a55
 .ai-copy > p:not(.ai-label) { max-width: 415px; margin-top: 14px; color: #f2f4e9; }
 .ai-copy .button { margin-top: 20px; }
 .ai-visual {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: clamp(16px, 3.4vw, 42px);
+  position: relative;
+  align-self: stretch;
   min-width: 0;
-  padding: 30px 24px 30px 12px;
 }
-.ai-phone { --phone-width: clamp(155px, 17vw, 218px); flex: none; transform: rotate(5deg); }
+.ai-phone {
+  --phone-width: clamp(200px, 24vw, 284px);
+  --phone-tilt: 5deg;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: 50% 44%;
+  transform: translate(-50%, -44%) rotate(var(--phone-tilt));
+}
 .ai-phone .phone-status { color: #fff; background: linear-gradient(#363735 76%, #36373500); }
-.ai-caption {
-  display: flex;
-  align-items: center;
-  flex: 0 1 200px;
-  gap: 10px;
-  padding: 16px;
-  border-radius: 17px;
-  color: #171d13;
-  background: #fcfdf1;
-  box-shadow: 0 12px 30px #0c130e45;
-}
 
 .progress-section { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 30px; }
 .progress-visual {
@@ -439,7 +433,6 @@ a.feature-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px #4a55
   .section { margin-block: 41px; }
   .feature-card { min-height: 235px; }
   .ai-copy { padding-left: 25px; }
-  .ai-caption { padding: 11px; }
   .app-panel { padding-inline: 28px; }
   .download-panel { gap: 14px; padding-inline: 20px; }
 }
@@ -485,9 +478,8 @@ a.feature-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px #4a55
   .camera-art, .diary-art, .dumbbell-art { right: -4px; bottom: -7px; transform: rotate(var(--art-tilt)) scale(.84); }
   .ai-panel { grid-template-columns: 1fr; border-radius: 21px; }
   .ai-copy { padding: 22px 20px 8px; }
-  .ai-visual { flex-direction: column; gap: 16px; padding: 26px 20px; }
-  .ai-phone { --phone-width: clamp(156px,49vw,210px); transform: rotate(3deg); }
-  .ai-caption { flex: none; }
+  .ai-visual { height: clamp(228px, 66vw, 300px); overflow: hidden; }
+  .ai-phone { --phone-width: clamp(194px, 61vw, 256px); --phone-tilt: 3deg; }
   .progress-section { grid-template-columns: 1fr; gap: 17px; }
   .progress-copy { grid-row: 1; }
   .progress-visual { height: 260px; }
