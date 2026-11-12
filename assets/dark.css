@@ -27,13 +27,8 @@
 :root[data-theme="dark"] .hero-label { background: #253b23; color: #d4efaa; box-shadow: inset 0 0 0 1px #45653b; }
 :root[data-theme="dark"] .hero-description { color: #ccd7c4; }
 :root[data-theme="dark"] .hero .underline::after { border-top-color: #bce875; }
-:root[data-theme="dark"] .hero .button-dark {
-  color: #15200d;
-  background: linear-gradient(145deg, #def6a5, #abd46d);
-  box-shadow: 0 8px 22px #81b34d38;
-}
-:root[data-theme="dark"] .hero .button-outline { border-color: #5b7154; background: #253123; }
-:root[data-theme="dark"] .hero .button-outline:hover { border-color: #aac98b; background: #33482e; }
+:root[data-theme="dark"] .store-badge { border-color: #617158; }
+:root[data-theme="dark"] a.store-badge:hover { border-color: #b2cd94; }
 :root[data-theme="dark"] .hero-back { border-color: #bdc9b9 #788773 #52604e #a3b09d; }
 :root[data-theme="dark"] .hero-front {
   border-color: #a8b699 #697963 #465144 #829278;
