@@ -112,24 +112,64 @@ const description = document.querySelector('meta[name="description"]');
 const englishDescription = description.content;
 let language = 'en';
 let theme = 'light';
+let galleryRequest = 0;
+
+function screenSource(screen, usesDarkSet) {
+  return `assets/screen-${language}-${usesDarkSet ? 'dark-' : ''}${screen}.png`;
+}
 
 function updateImage(image) {
   const screen = (theme === 'dark' && image.dataset.darkHeroScreen) || image.dataset.screen;
   const usesDarkSet = theme === 'dark' && image.hasAttribute('data-theme-screen');
-  const source = `assets/screen-${language}-${usesDarkSet ? 'dark-' : ''}${screen}.png`;
+  const source = screenSource(screen, usesDarkSet);
   image.toggleAttribute('data-dark-screen', usesDarkSet || screen === '07-home-dark');
   if (image.getAttribute('src') !== source) image.src = source;
   if (!image.closest('[aria-hidden="true"]')) image.alt = screens[screen][language];
 }
 
-function showScreen(screen) {
+async function showScreen(screen, animate = false) {
+  if (animate && galleryImage.dataset.screen === screen) return;
+
+  const request = ++galleryRequest;
   const selected = galleryButtons.find((button) => button.dataset.gallery === screen);
   for (const button of galleryButtons) {
     button.setAttribute('aria-pressed', String(button === selected));
   }
   galleryImage.dataset.screen = screen;
+
+  const nextSource = screenSource(screen, theme === 'dark');
+  const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)');
+  const canFade = animate && nextSource !== galleryImage.getAttribute('src')
+    && !reducedMotion?.matches && galleryImage.complete && galleryImage.naturalWidth
+    && typeof galleryImage.animate === 'function' && typeof galleryImage.decode === 'function';
+  let previousImage;
+  if (canFade) {
+    const nextImage = new Image();
+    nextImage.src = nextSource;
+    const decoded = await nextImage.decode().then(() => true, () => false);
+    if (request !== galleryRequest) return;
+
+    if (decoded && !reducedMotion?.matches) {
+      previousImage = new Image();
+      previousImage.className = 'gallery-previous';
+      previousImage.alt = '';
+      previousImage.setAttribute('aria-hidden', 'true');
+      previousImage.src = galleryImage.src;
+    }
+  }
+
+  galleryImage.parentElement.querySelector('.gallery-previous')?.remove();
   updateImage(galleryImage);
   galleryCaption.textContent = selected.textContent;
+
+  if (previousImage) {
+    galleryImage.after(previousImage);
+    const fade = previousImage.animate([{ opacity: 1 }, { opacity: 0 }], {
+      duration: 260,
+      easing: 'ease-out',
+    });
+    fade.onfinish = () => previousImage.remove();
+  }
 }
 
 function updatePage() {
@@ -190,11 +230,11 @@ themeToggle.addEventListener('click', () => {
 });
 
 for (const button of galleryButtons) {
-  button.addEventListener('click', () => showScreen(button.dataset.gallery));
+  button.addEventListener('click', () => showScreen(button.dataset.gallery, true));
 }
 
 for (const link of document.querySelectorAll('[data-gallery-link]')) {
-  link.addEventListener('click', () => showScreen(link.dataset.galleryLink));
+  link.addEventListener('click', () => showScreen(link.dataset.galleryLink, true));
 }
 
 window.addEventListener('popstate', updatePage);
