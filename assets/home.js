@@ -15,7 +15,7 @@ const russianCopy = {
   appStoreCaption: 'Загрузите в',
   appStoreUnavailable: 'App Store, ссылка недоступна',
   googlePlayCaption: 'Доступно в',
-  heroTitle: 'Здоровые привычки —',
+  heroTitle: 'Здоровые привычки –',
   heroAccent: 'каждый день.',
   heroDescription: 'Калории, питание, активность и прогресс в одном приложении.',
   cameraTitle: 'ИИ-камера',
