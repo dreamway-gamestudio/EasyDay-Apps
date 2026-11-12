@@ -85,6 +85,10 @@ const screens = {
     ru: 'ИИ-камера с блюдом из лосося, риса и овощей в рамке',
     extension: 'jpg',
   },
+  '09-weight-progress': {
+    en: 'Annual weight progress with a goal and trend chart',
+    ru: 'Контроль веса за год с целью и графиком динамики',
+  },
 };
 
 const copyElements = [...document.querySelectorAll('[data-copy], [data-label]')];

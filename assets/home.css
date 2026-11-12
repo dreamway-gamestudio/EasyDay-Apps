@@ -360,12 +360,11 @@ a.feature-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px #4a55
   background: radial-gradient(ellipse at 30% 91%, #dbeea5, transparent 70%), #f3f1e8;
 }
 .progress-visual .phone { position: absolute; --phone-width: clamp(142px, 16vw, 218px); }
-.progress-back { left: 14%; top: 55px; transform: rotate(-11deg); }
+.progress-back { left: 14%; top: 33px; transform: rotate(-11deg); }
 .progress-front { left: 43%; top: 23px; transform: rotate(-3deg); }
 .progress-copy p, .app-copy > p { margin-top: 14px; max-width: 505px; color: var(--muted); }
 .progress-details { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; margin-top: 22px; }
 .progress-details div { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; min-width: 0; padding: 12px; border-radius: 15px; background: #eff3e3; }
-.progress-details span { color: #446a19; font-size: 1.4rem; line-height: 1; }
 .progress-details strong { font-size: .82rem; overflow-wrap: anywhere; }
 
 .app-panel {
@@ -486,7 +485,7 @@ a.feature-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px #4a55
   .progress-copy { grid-row: 1; }
   .progress-visual { height: 260px; }
   .progress-visual .phone { --phone-width: clamp(128px,40vw,178px); }
-  .progress-back { top: 50px; }
+  .progress-back { top: 28px; }
   .progress-front { top: 19px; }
   .progress-details { margin-top: 15px; gap: 6px; }
   .progress-details div { padding: 10px; }

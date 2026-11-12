@@ -64,7 +64,6 @@
   background: radial-gradient(ellipse at 38% 85%, #3b512c, transparent 72%), #1b251b;
 }
 :root[data-theme="dark"] .progress-details div { background: var(--surface); box-shadow: inset 0 0 0 1px #364832; }
-:root[data-theme="dark"] .progress-details span { color: var(--accent); }
 
 :root[data-theme="dark"] .app-panel {
   border-color: #43543a;
