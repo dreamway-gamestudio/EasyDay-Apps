@@ -14,9 +14,39 @@
 :root[data-theme="dark"] .language a[aria-current] { background: #283a24; color: var(--accent); }
 :root[data-theme="dark"] .theme-toggle { background: #1b2219; }
 
-/* Keep the opening composition and its two app previews identical in both themes. */
-:root[data-theme="dark"] .hero { color-scheme: light; --paper: #faf9f5; color: #161916; }
-:root[data-theme="dark"] .hero :focus-visible { outline-color: #527913; }
+:root[data-theme="dark"] .hero {
+  --hero-glow: #8aba5140;
+  --leaf-upper: #83b656;
+  --leaf-middle: #5a8b37;
+  --leaf-shade: #2f5827;
+  --leaf-vein: #b9e49c69;
+  background:
+    radial-gradient(ellipse at 75% 72%, #3a552d 0%, #233322 28%, transparent 63%),
+    linear-gradient(110deg, #111510 15%, #161e15 62%, #1b291b);
+}
+:root[data-theme="dark"] .hero-label { background: #253b23; color: #d4efaa; box-shadow: inset 0 0 0 1px #45653b; }
+:root[data-theme="dark"] .hero-description { color: #ccd7c4; }
+:root[data-theme="dark"] .hero .underline::after { border-top-color: #bce875; }
+:root[data-theme="dark"] .hero .button-dark {
+  color: #15200d;
+  background: linear-gradient(145deg, #def6a5, #abd46d);
+  box-shadow: 0 8px 22px #81b34d38;
+}
+:root[data-theme="dark"] .hero .button-outline { border-color: #5b7154; background: #253123; }
+:root[data-theme="dark"] .hero .button-outline:hover { border-color: #aac98b; background: #33482e; }
+:root[data-theme="dark"] .hero-back { border-color: #bdc9b9 #788773 #52604e #a3b09d; }
+:root[data-theme="dark"] .hero-front {
+  border-color: #a8b699 #697963 #465144 #829278;
+  box-shadow: inset 0 0 0 1px #ffffff3b, 0 22px 43px #020802a6, 0 0 30px #c1ee8540;
+}
+:root[data-theme="dark"] .hero .floating {
+  border-color: #506a46;
+  background: #243322f5;
+  box-shadow: 0 10px 25px #02090360;
+}
+:root[data-theme="dark"] .hero .floating small { color: #c1d0b9; }
+:root[data-theme="dark"] .hero .tile-icon { color: #d8f5a7; background: #3b562e; }
+:root[data-theme="dark"] .hero .water-icon { color: #a8def1; background: #284653; }
 
 :root[data-theme="dark"] .feature-card {
   box-shadow: inset 0 0 0 1px #394633;

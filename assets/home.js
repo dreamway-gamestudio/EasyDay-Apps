@@ -100,10 +100,10 @@ let language = 'en';
 let theme = 'light';
 
 function updateImage(image) {
-  const screen = image.dataset.screen;
+  const screen = (theme === 'dark' && image.dataset.darkHeroScreen) || image.dataset.screen;
   const usesDarkSet = theme === 'dark' && image.hasAttribute('data-theme-screen') && screen !== '07-home-dark';
   const source = `assets/screen-${language}-${usesDarkSet ? 'dark-' : ''}${screen}.png`;
-  image.toggleAttribute('data-dark-screen', usesDarkSet);
+  image.toggleAttribute('data-dark-screen', usesDarkSet || screen === '07-home-dark');
   if (image.getAttribute('src') !== source) image.src = source;
   if (!image.closest('[aria-hidden="true"]')) image.alt = screens[screen][language];
 }
