@@ -165,25 +165,8 @@ p { line-height: 1.55; }
   pointer-events: none;
 }
 .phone-screen:has([data-screen="07-home-dark"]) .phone-status { color: #fff; background: #181920; }
-.status-symbols { display: flex; align-items: center; gap: .24em; }
-.status-signal {
-  width: .9em;
-  height: .66em;
-  background:
-    linear-gradient(currentColor,currentColor) left bottom / 17% 30% no-repeat,
-    linear-gradient(currentColor,currentColor) left 27% bottom / 17% 52% no-repeat,
-    linear-gradient(currentColor,currentColor) left 55% bottom / 17% 76% no-repeat,
-    linear-gradient(currentColor,currentColor) right bottom / 17% 100% no-repeat;
-}
-.status-wifi {
-  width: .9em;
-  height: .66em;
-  background: radial-gradient(ellipse at 50% 100%, currentColor 0 17%, transparent 18% 29%, currentColor 30% 47%, transparent 48% 60%, currentColor 61% 80%, transparent 81%);
-  clip-path: polygon(0 0, 100% 0, 58% 100%, 42% 100%);
-}
-.status-battery { position: relative; width: 1.2em; height: .66em; border: 1px solid currentColor; border-radius: .2em; }
-.status-battery::before { content: ""; position: absolute; inset: 1px; border-radius: 1px; background: currentColor; }
-.status-battery::after { content: ""; position: absolute; top: 23%; left: calc(100% + 1px); width: 1px; height: 54%; border-radius: 1px; background: currentColor; }
+.status-definitions { position: absolute; }
+.status-symbols { display: block; flex: none; width: 3.9em; height: 1em; }
 .hero-stage .phone { position: absolute; }
 .hero-back { --phone-width: clamp(150px, 17vw, 230px); top: 90px; left: 10%; transform: rotate(-11deg); }
 .hero-front { --phone-width: clamp(175px, 19.6vw, 248px); top: 12px; left: 34%; transform: rotate(4.4deg); }
