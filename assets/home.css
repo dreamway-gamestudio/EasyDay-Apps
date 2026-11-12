@@ -244,6 +244,7 @@ p { line-height: 1.55; }
 .float-progress { top: 198px; right: -1%; transform: rotate(-5deg); }
 .float-water { top: 288px; right: 1%; transform: rotate(3deg); }
 .tile-icon { display: grid; flex: 0 0 33px; width: 33px; height: 33px; place-items: center; border-radius: 9px; background: #dfefb1; color: #406414; font-size: 1.55rem; font-weight: 800; }
+.floating .tile-icon img { width: 84%; height: 84%; object-fit: contain; }
 .water-icon { color: #176485; background: #def1fa; }
 
 h2 { font-size: clamp(2rem, 4.25vw, 3.75rem); line-height: 1.04; font-weight: 880; letter-spacing: -.055em; }
