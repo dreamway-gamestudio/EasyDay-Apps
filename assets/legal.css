@@ -12,12 +12,15 @@
 
 .legal-header .header-inner {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   min-height: 70px;
+  padding-block: 10px;
 }
 
 .legal-back {
   gap: 7px;
+  margin-inline-start: auto;
   min-height: 40px;
   padding: 8px 14px;
   border-color: var(--line);
