@@ -32,7 +32,16 @@ const russianCopy = {
   workoutsTitle: 'Тренировки',
   featureWorkouts: 'Выбирай активность и смотри, как она связана с твоей целью по калориям.',
   aiTitle: 'Узнавай калории по фото',
-  aiDescription: 'Сфотографируй блюдо и получи оценку калорийности и состава. Её можно использовать для записи в дневнике питания.',
+  aiDescription: 'Сфотографируй блюдо. ИИ распознает продукты и оценит калорийность, количество белков, жиров и углеводов.',
+  aiTryNow: 'Попробовать сейчас',
+  aiPhotoLabel: 'Камера телефона наводится на тарелку с курицей, рисом и овощами',
+  aiResultTitle: 'Результат анализа',
+  aiDish: 'Куриная грудка с рисом и овощами',
+  aiCaloriesUnit: 'ккал',
+  aiProtein: 'Белки',
+  aiFat: 'Жиры',
+  aiCarbs: 'Углеводы',
+  aiGrams: 'г',
   progressTitle: 'Следи за прогрессом',
   progressDescription: 'Смотри, как меняются активность, калорийность рациона и вес, чтобы видеть результат своих привычек.',
   progressActivity: 'Активные дни',
@@ -80,11 +89,6 @@ const screens = {
     en: 'Home screen with dark mode enabled',
     ru: 'Главный экран в тёмной теме',
   },
-  '08-ai-camera': {
-    en: 'AI camera framing a meal of salmon, rice, and vegetables',
-    ru: 'ИИ-камера с блюдом из лосося, риса и овощей в рамке',
-    extension: 'jpg',
-  },
   '09-weight-progress': {
     en: 'Annual weight progress with a goal and trend chart',
     ru: 'Контроль веса за год с целью и графиком динамики',
@@ -111,8 +115,7 @@ let theme = 'light';
 function updateImage(image) {
   const screen = (theme === 'dark' && image.dataset.darkHeroScreen) || image.dataset.screen;
   const usesDarkSet = theme === 'dark' && image.hasAttribute('data-theme-screen');
-  const extension = screens[screen].extension ?? 'png';
-  const source = `assets/screen-${language}-${usesDarkSet ? 'dark-' : ''}${screen}.${extension}`;
+  const source = `assets/screen-${language}-${usesDarkSet ? 'dark-' : ''}${screen}.png`;
   image.toggleAttribute('data-dark-screen', usesDarkSet || screen === '07-home-dark');
   if (image.getAttribute('src') !== source) image.src = source;
   if (!image.closest('[aria-hidden="true"]')) image.alt = screens[screen][language];

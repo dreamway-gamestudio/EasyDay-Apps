@@ -320,36 +320,83 @@ a.feature-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px #4a55
 
 .ai-panel {
   display: grid;
-  grid-template-columns: .9fr 1.1fr;
+  grid-template-columns: minmax(0, .88fr) minmax(0, 1.62fr);
   align-items: center;
-  min-height: 375px;
+  gap: clamp(12px, 2vw, 26px);
+  padding-inline: clamp(24px, 4vw, 48px);
   overflow: hidden;
   border-radius: 28px;
-  background: radial-gradient(ellipse at 69% 115%, #59692b, transparent 64%), linear-gradient(135deg,#2d302d,#181b17);
+  background: radial-gradient(ellipse at 68% 114%, #536329, transparent 67%), linear-gradient(135deg, #2b2d2b, #191d17);
   color: white;
 }
-.ai-copy { position: relative; z-index: 1; padding: 36px 0 36px 48px; }
+.ai-copy { position: relative; z-index: 1; padding-block: 36px; }
 .ai-label { display: inline-block; margin-bottom: 15px; padding: 5px 13px; border: 1px solid #7b9a3c; border-radius: 24px; background: #44562c; color: #f2f9df; font-size: .76rem; font-weight: 700; }
-.ai-copy h2 { font-size: clamp(2.05rem, 4vw, 3.6rem); }
+.ai-copy h2 { font-size: clamp(2rem, 3.55vw, 3.3rem); text-wrap: initial; }
 .ai-copy > p:not(.ai-label) { max-width: 415px; margin-top: 14px; color: #f2f4e9; }
-.ai-copy .button { margin-top: 20px; }
+.ai-copy .button { margin-top: 20px; border-radius: 999px; }
+.ai-demo {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) clamp(20px, 3vw, 34px) minmax(205px, .95fr);
+  align-items: center;
+  align-self: stretch;
+  gap: 8px;
+}
 .ai-visual {
-  --camera-phone-width: clamp(216px, 26vw, 310px);
   position: relative;
   align-self: stretch;
   min-width: 0;
-  min-height: calc(var(--camera-phone-width) * 1.5);
+  min-height: clamp(330px, 36vw, 400px);
 }
-.ai-phone {
-  --phone-width: var(--camera-phone-width);
-  --phone-tilt: 5deg;
+.ai-visual img {
   position: absolute;
-  top: 50%;
+  bottom: -14%;
   left: 50%;
-  transform-origin: 50% 63%;
-  transform: translate(-50%, -63%) rotate(var(--phone-tilt));
+  width: calc(100% + 16px);
+  height: 114%;
+  max-width: none;
+  object-fit: contain;
+  object-position: center bottom;
+  transform: translateX(-50%);
 }
-.ai-phone .phone-status { color: #fff; background: linear-gradient(#363735 76%, #36373500); }
+.ai-demo-arrow { width: 100%; height: auto; color: #cff478; }
+.ai-result {
+  --result-track: #e5e6db;
+  position: relative;
+  display: grid;
+  gap: 13px;
+  padding: clamp(12px, 1.7vw, 20px);
+  border: 1px solid #ffffffc7;
+  border-radius: 22px;
+  background: #fafbf1;
+  color: #191d16;
+  box-shadow: 0 14px 32px #0b130850;
+}
+.ai-result h3 { display: flex; align-items: center; gap: 5px; font-size: 1rem; line-height: 1.15; }
+.ai-result h3 img { flex: none; }
+.ai-meal { display: grid; grid-template-columns: 52px minmax(0, 1fr); align-items: start; gap: 10px; }
+.ai-meal-thumbnail { position: relative; width: 52px; aspect-ratio: 1; overflow: hidden; border-radius: 9px; background: #393a2c; }
+.ai-meal-thumbnail img {
+  position: absolute;
+  top: -70%;
+  left: -90%;
+  width: 240%;
+  height: auto;
+  max-width: none;
+}
+.ai-meal p { font-size: .77rem; font-weight: 650; line-height: 1.25; }
+.ai-meal .ai-calories { margin-top: 5px; font-size: .8rem; font-weight: 700; }
+.ai-calories strong { font-size: 1.32rem; letter-spacing: -.04em; }
+.ai-macros { display: grid; gap: 7px; margin: 0; }
+.ai-macro { display: grid; grid-template-columns: minmax(88px, .95fr) minmax(0, 1fr); align-items: center; gap: 8px; font-size: .73rem; }
+.ai-macro dt, .ai-macro dd { display: flex; align-items: center; gap: 6px; margin: 0; }
+.ai-macro dt { font-weight: 650; }
+.ai-macro dt img { flex: none; border-radius: 6px; }
+.ai-macro dd strong { min-width: 3em; text-align: end; white-space: nowrap; }
+.ai-macro-bar { flex: 1; height: 6px; border-radius: 999px; background: var(--result-track); }
+.ai-macro-bar::before { content: ""; display: block; width: var(--portion); height: 100%; border-radius: inherit; background: var(--macro-color); }
+.ai-protein { --macro-color: #86ba43; --portion: 62%; }
+.ai-fat { --macro-color: #e6b635; --portion: 18%; }
+.ai-carbs { --macro-color: #ad83df; --portion: 100%; }
 
 .progress-section { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 30px; }
 .progress-visual {
@@ -433,7 +480,9 @@ a.feature-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px #4a55
   .tile-icon { width: 25px; height: 25px; flex-basis: 25px; font-size: 1.15rem; }
   .section { margin-block: 41px; }
   .feature-card { min-height: 235px; }
-  .ai-copy { padding-left: 25px; }
+  .ai-panel { grid-template-columns: minmax(0, 1fr); }
+  .ai-copy { padding-block: 26px 0; }
+  .ai-demo { width: min(100%, 680px); margin-inline: auto; }
   .app-panel { padding-inline: 28px; }
   .download-panel { gap: 14px; padding-inline: 20px; }
 }
@@ -477,10 +526,8 @@ a.feature-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px #4a55
   .feature-card p { font-size: .77rem; }
   .feature-icon { width: 33px; height: 33px; border-radius: 10px; }
   .camera-art, .diary-art, .dumbbell-art { right: -4px; bottom: -7px; transform: rotate(var(--art-tilt)) scale(.84); }
-  .ai-panel { grid-template-columns: 1fr; border-radius: 21px; }
-  .ai-copy { padding: 22px 20px 8px; }
-  .ai-visual { --camera-phone-width: clamp(208px, 66vw, 278px); overflow: hidden; }
-  .ai-phone { --phone-tilt: 3deg; }
+  .ai-panel { border-radius: 21px; }
+  .ai-visual { min-height: 300px; }
   .progress-section { grid-template-columns: 1fr; gap: 17px; }
   .progress-copy { grid-row: 1; }
   .progress-visual { height: 260px; }
@@ -498,6 +545,15 @@ a.feature-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px #4a55
   .download-panel .actions { grid-column: 1 / -1; }
   .download-logo { width: 43px; height: 43px; border-radius: 12px; }
   .footer-inner { flex-direction: column; align-items: flex-start; gap: 15px; }
+}
+
+@media (max-width: 520px) {
+  .ai-panel { padding: 0 18px 20px; }
+  .ai-demo { grid-template-columns: minmax(0, 1fr); gap: 9px; }
+  .ai-visual { min-height: clamp(250px, 66vw, 340px); overflow: hidden; }
+  .ai-visual img { width: 100%; }
+  .ai-demo-arrow { justify-self: center; width: 27px; transform: rotate(90deg); }
+  .ai-result { justify-self: center; width: min(100%, 330px); }
 }
 
 @media (max-width: 355px) {

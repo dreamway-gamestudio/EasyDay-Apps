@@ -149,21 +149,42 @@
       <div class="ai-panel">
         <div class="ai-copy">
           <p class="ai-label" data-copy="cameraTitle">AI camera</p>
-          <h2 id="ai-title" data-copy="aiTitle">See the calories in a photo</h2>
-          <p data-copy="aiDescription">Take a photo of your meal and get an estimate of its calories and nutrients. Use it as a starting point for your food diary.</p>
-          <a class="button button-lime" href="#download"><span data-copy="getApp">Download the app</span><span aria-hidden="true">↗</span></a>
+          <h2 id="ai-title" data-copy="aiTitle">Count calories from a photo</h2>
+          <p data-copy="aiDescription">Snap a photo of your meal. AI identifies the foods and estimates calories, protein, fat, and carbs.</p>
+          <a class="button button-lime" href="#download"><span data-copy="aiTryNow">Try now</span><span aria-hidden="true">→</span></a>
         </div>
-        <figure class="ai-visual">
-          <div class="phone ai-phone">
-            <div class="phone-screen">
-              <img data-screen="08-ai-camera" src="assets/screen-en-08-ai-camera.jpg" width="1080" height="2424" alt="AI camera framing a meal of salmon, rice, and vegetables" loading="lazy">
-              <span class="phone-status" aria-hidden="true">
-                <span>9:41</span>
-                <svg class="status-symbols" viewBox="0 0 55 14"><use href="#status-icons"/></svg>
-              </span>
+        <div class="ai-demo">
+          <figure class="ai-visual" role="img" aria-label="Phone camera framing a plate of chicken, rice, and vegetables" data-label="aiPhotoLabel">
+            <img src="assets/ai-camera-meal.webp" width="840" height="1050" alt="" loading="lazy">
+          </figure>
+          <svg class="ai-demo-arrow" viewBox="0 0 34 24" width="34" height="24" aria-hidden="true">
+            <path d="M3 19C8 12 17 9 30 10m-8-7 8 7-8 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div class="ai-result">
+            <h3><span data-copy="aiResultTitle">Analysis result</span><img src="assets/icon-feature-camera.png" width="16" height="16" alt=""></h3>
+            <div class="ai-meal">
+              <span class="ai-meal-thumbnail" aria-hidden="true"><img src="assets/ai-camera-meal.webp" width="840" height="1050" alt="" loading="lazy"></span>
+              <div>
+                <p data-copy="aiDish">Chicken breast with rice and vegetables</p>
+                <p class="ai-calories"><strong>540</strong> <span data-copy="aiCaloriesUnit">kcal</span></p>
+              </div>
             </div>
+            <dl class="ai-macros">
+              <div class="ai-macro ai-protein">
+                <dt><img src="assets/ai-macro-protein.png" width="22" height="22" alt="" loading="lazy"><span data-copy="aiProtein">Protein</span></dt>
+                <dd><span class="ai-macro-bar" aria-hidden="true"></span><strong>42 <span data-copy="aiGrams">g</span></strong></dd>
+              </div>
+              <div class="ai-macro ai-fat">
+                <dt><img src="assets/ai-macro-fat.png" width="22" height="22" alt="" loading="lazy"><span data-copy="aiFat">Fat</span></dt>
+                <dd><span class="ai-macro-bar" aria-hidden="true"></span><strong>12 <span data-copy="aiGrams">g</span></strong></dd>
+              </div>
+              <div class="ai-macro ai-carbs">
+                <dt><img src="assets/ai-macro-carbs.png" width="22" height="22" alt="" loading="lazy"><span data-copy="aiCarbs">Carbs</span></dt>
+                <dd><span class="ai-macro-bar" aria-hidden="true"></span><strong>68 <span data-copy="aiGrams">g</span></strong></dd>
+              </div>
+            </dl>
           </div>
-        </figure>
+        </div>
       </div>
     </section>
 
