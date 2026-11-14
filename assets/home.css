@@ -68,7 +68,7 @@ p { line-height: 1.55; }
   height: 12px;
   border-radius: 50%;
   box-shadow: -3px 2px 0 0 currentColor;
-  transform: translate(2px, -1px);
+  transform: translate(3.5px, -2px);
 }
 .theme-toggle[aria-checked="false"] .theme-sun { background: #e4efcf; color: #2f4811; }
 .theme-toggle[aria-checked="true"] .theme-moon { background: #d2edaa; color: #172017; }
