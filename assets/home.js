@@ -13,6 +13,7 @@ const russianCopy = {
   gallery: 'Скриншоты приложения',
   galleryPrevious: 'Предыдущий скриншот',
   galleryNext: 'Следующий скриншот',
+  galleryDots: 'Выбор скриншота',
   footer: 'Поддержка и документы',
   navFeatures: 'Функции',
   navApp: 'Демо',
@@ -114,6 +115,15 @@ const mobileSettings = document.querySelector('.mobile-settings');
 const settingsTrigger = mobileSettings.querySelector('summary');
 const themeOptions = mobileSettings.querySelectorAll('[data-site-theme]');
 const galleryButtons = [...document.querySelectorAll('[data-gallery]')];
+const galleryPagination = document.querySelector('.gallery-dots');
+const galleryDots = galleryButtons.map((button) => {
+  const dot = document.createElement('button');
+  dot.type = 'button';
+  dot.setAttribute('aria-controls', 'gallery-image');
+  dot.addEventListener('click', () => showScreen(button.dataset.gallery, true));
+  return dot;
+});
+galleryPagination.append(...galleryDots);
 const galleryImage = document.getElementById('gallery-image');
 const galleryCaption = document.getElementById('gallery-caption');
 const showcaseImages = document.querySelectorAll('[data-screen]:not(#gallery-image)');
@@ -140,10 +150,13 @@ async function showScreen(screen, animate = false) {
   if (animate && galleryImage.dataset.screen === screen) return;
 
   const request = ++galleryRequest;
-  const selected = galleryButtons.find((button) => button.dataset.gallery === screen);
-  for (const button of galleryButtons) {
-    button.setAttribute('aria-pressed', String(button === selected));
-  }
+  const selected = galleryButtons.findIndex(button => button.dataset.gallery === screen);
+  galleryButtons.forEach((button, index) => {
+    const pressed = String(index === selected);
+    button.setAttribute('aria-pressed', pressed);
+    galleryDots[index].setAttribute('aria-pressed', pressed);
+    galleryDots[index].setAttribute('aria-label', `${index + 1} / ${galleryButtons.length} · ${button.textContent}`);
+  });
   galleryImage.dataset.screen = screen;
 
   const nextSource = screenSource(screen, theme === 'dark');
@@ -169,7 +182,7 @@ async function showScreen(screen, animate = false) {
 
   galleryImage.parentElement.querySelector('.gallery-previous')?.remove();
   updateImage(galleryImage);
-  galleryCaption.textContent = selected.textContent;
+  galleryCaption.textContent = galleryButtons[selected].textContent;
 
   if (previousImage) {
     galleryImage.after(previousImage);
