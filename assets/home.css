@@ -544,6 +544,8 @@ a.feature-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px #4a55
   .home-header .header-inner { gap: 8px; padding-block: 12px 10px; }
   .mobile-settings { display: block; position: relative; flex: none; }
   .home-header :is(.main-nav, .header-actions) { display: none; }
+  .footer-inner { flex-direction: column; align-items: flex-start; gap: 15px; }
+  .footer-links { flex-direction: column; align-items: flex-start; }
 }
 
 @media (max-width: 880px) {
@@ -616,7 +618,6 @@ a.feature-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px #4a55
   .download-panel { grid-template-columns: auto 1fr; padding: 18px; border-radius: 20px; }
   .download-panel .actions { grid-column: 1 / -1; }
   .download-logo { width: 43px; height: 43px; }
-  .footer-inner { flex-direction: column; align-items: flex-start; gap: 15px; }
 }
 
 @media (max-width: 520px) {
