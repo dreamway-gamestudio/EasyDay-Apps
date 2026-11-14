@@ -76,31 +76,19 @@ p { line-height: 1.55; }
 .mobile-settings { display: none; }
 .settings-trigger {
   display: flex;
-  min-width: 49px;
+  min-width: 40px;
   min-height: 40px;
   align-items: center;
   justify-content: center;
-  gap: 6px;
   padding-inline: 8px;
   border: 1px solid var(--line);
   border-radius: 20px;
   background: var(--paper);
   list-style: none;
-  font-size: .72rem;
-  font-weight: 800;
   cursor: pointer;
 }
 .settings-trigger::-webkit-details-marker { display: none; }
-.settings-trigger::after {
-  content: "";
-  width: 6px;
-  height: 6px;
-  border: solid currentColor;
-  border-width: 0 1.5px 1.5px 0;
-  transform: translateY(-1px) rotate(45deg);
-}
 .mobile-settings[open] .settings-trigger { border-color: #7e9d54; }
-.mobile-settings[open] .settings-trigger::after { transform: translateY(1px) rotate(225deg); }
 .settings-panel {
   position: absolute;
   inset: calc(100% + 8px) 0 auto auto;

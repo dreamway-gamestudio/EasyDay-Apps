@@ -110,7 +110,6 @@ const languageLinks = [...document.querySelectorAll('[data-lang]')];
 const themeToggle = document.querySelector('.theme-toggle');
 const mobileSettings = document.querySelector('.mobile-settings');
 const settingsTrigger = mobileSettings.querySelector('summary');
-const settingsLanguage = mobileSettings.querySelector('.settings-language');
 const themeOptions = mobileSettings.querySelectorAll('[data-site-theme]');
 const galleryButtons = [...document.querySelectorAll('[data-gallery]')];
 const galleryImage = document.getElementById('gallery-image');
@@ -186,7 +185,6 @@ function updatePage() {
   siteTheme.apply(theme);
   document.documentElement.lang = language;
   themeToggle.setAttribute('aria-checked', String(theme === 'dark'));
-  settingsLanguage.textContent = language.toUpperCase();
   for (const option of themeOptions) {
     option.setAttribute('aria-pressed', String(option.dataset.siteTheme === theme));
   }
