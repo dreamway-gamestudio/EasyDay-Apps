@@ -53,7 +53,7 @@ const russianCopy = {
   progressDescription: 'Смотри, как меняются активность, калорийность рациона и вес, чтобы видеть результат своих привычек.',
   progressActivity: 'Активные дни',
   progressWeight: 'Динамика веса',
-  appTitle: 'Посмотри Calorie Tracker',
+  appTitle: 'Посмотри Healta',
   appDescription: 'Выбери экран, чтобы увидеть, как устроено приложение.',
   screenActivity: 'Активность',
   screenNutrition: 'Питание',
@@ -204,7 +204,7 @@ function updatePage() {
     option.setAttribute('aria-pressed', String(option.dataset.siteTheme === theme));
   }
   description.content = language === 'ru'
-    ? 'Следи за калориями, планируй питание и отслеживай активность с Calorie Tracker от EasyDay Apps.'
+    ? 'Следи за калориями, планируй питание и отслеживай активность с Healta от EasyDay Apps.'
     : englishDescription;
 
   copyElements.forEach((element, index) => {
