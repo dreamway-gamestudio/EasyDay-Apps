@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="home-page">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -41,13 +41,18 @@
         <span class="brand-app">Calorie Tracker</span>
       </a>
       <details class="mobile-settings">
-        <summary class="settings-trigger" aria-label="Language and theme" data-label="siteSettings">
+        <summary class="settings-trigger" aria-label="Navigation, language and theme" data-label="siteSettings">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true">
             <path d="M10 3h4l.6 2.7 1.4.8 2.6-.8 2 3.5-2 1.9v1.8l2 1.9-2 3.5-2.6-.8-1.4.8L14 21h-4l-.6-2.7-1.4-.8-2.6.8-2-3.5 2-1.9v-1.8l-2-1.9 2-3.5 2.6.8 1.4-.8L10 3Z"/>
             <circle cx="12" cy="12" r="3"/>
           </svg>
         </summary>
         <div class="settings-panel">
+          <nav class="settings-nav" aria-label="Main navigation" data-label="navigation">
+            <a href="#features" data-copy="navFeatures">Features</a>
+            <a href="#app" data-copy="navApp">Demo</a>
+            <a href="#support" data-copy="navSupport">Help</a>
+          </nav>
           <div class="settings-group" role="group" aria-labelledby="settings-language-label">
             <p id="settings-language-label" data-copy="settingsLanguage">Language</p>
             <div class="settings-options">

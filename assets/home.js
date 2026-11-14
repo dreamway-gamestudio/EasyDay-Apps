@@ -5,7 +5,7 @@ const russianCopy = {
   navigation: 'Основная навигация',
   language: 'Язык сайта',
   siteTheme: 'Тёмная тема сайта',
-  siteSettings: 'Язык и тема',
+  siteSettings: 'Навигация, язык и тема',
   settingsLanguage: 'Язык',
   settingsTheme: 'Тема',
   themeLight: 'Светлая',
@@ -259,6 +259,10 @@ mobileSettings.addEventListener('keydown', (event) => {
   event.preventDefault();
   closeSettings();
 });
+
+for (const link of mobileSettings.querySelectorAll('.settings-nav a')) {
+  link.addEventListener('click', closeSettings);
+}
 
 document.addEventListener('click', (event) => {
   if (mobileSettings.open && !mobileSettings.contains(event.target)) mobileSettings.open = false;
