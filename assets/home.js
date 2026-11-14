@@ -5,6 +5,11 @@ const russianCopy = {
   navigation: 'Основная навигация',
   language: 'Язык сайта',
   siteTheme: 'Тёмная тема сайта',
+  siteSettings: 'Язык и тема',
+  settingsLanguage: 'Язык',
+  settingsTheme: 'Тема',
+  themeLight: 'Светлая',
+  themeDark: 'Тёмная',
   gallery: 'Скриншоты приложения',
   footer: 'Поддержка и документы',
   navFeatures: 'Функции',
@@ -103,6 +108,10 @@ const englishValues = copyElements.map((element) => {
 
 const languageLinks = [...document.querySelectorAll('[data-lang]')];
 const themeToggle = document.querySelector('.theme-toggle');
+const mobileSettings = document.querySelector('.mobile-settings');
+const settingsTrigger = mobileSettings.querySelector('summary');
+const settingsLanguage = mobileSettings.querySelector('.settings-language');
+const themeOptions = mobileSettings.querySelectorAll('[data-site-theme]');
 const galleryButtons = [...document.querySelectorAll('[data-gallery]')];
 const galleryImage = document.getElementById('gallery-image');
 const galleryCaption = document.getElementById('gallery-caption');
@@ -177,6 +186,10 @@ function updatePage() {
   siteTheme.apply(theme);
   document.documentElement.lang = language;
   themeToggle.setAttribute('aria-checked', String(theme === 'dark'));
+  settingsLanguage.textContent = language.toUpperCase();
+  for (const option of themeOptions) {
+    option.setAttribute('aria-pressed', String(option.dataset.siteTheme === theme));
+  }
   description.content = language === 'ru'
     ? 'Следи за калориями, планируй питание и отслеживай активность с Calorie Tracker от EasyDay Apps.'
     : englishDescription;
@@ -209,23 +222,48 @@ function updatePage() {
   siteTheme.updatePageLinks();
 }
 
+function closeSettings() {
+  if (!mobileSettings.open) return;
+  mobileSettings.open = false;
+  settingsTrigger.focus();
+}
+
 for (const link of languageLinks) {
   link.addEventListener('click', (event) => {
     if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     event.preventDefault();
+    closeSettings();
     if (link.dataset.lang === language) return;
     history.pushState(null, '', link.href);
     updatePage();
   });
 }
 
-themeToggle.addEventListener('click', () => {
-  const nextTheme = theme === 'dark' ? 'light' : 'dark';
+function setTheme(nextTheme) {
   const url = new URL(window.location.href);
   url.searchParams.set('theme', nextTheme);
   history.replaceState(null, '', url);
   siteTheme.save(nextTheme);
   updatePage();
+}
+
+themeToggle.addEventListener('click', () => setTheme(theme === 'dark' ? 'light' : 'dark'));
+
+for (const option of themeOptions) {
+  option.addEventListener('click', () => {
+    setTheme(option.dataset.siteTheme);
+    closeSettings();
+  });
+}
+
+mobileSettings.addEventListener('keydown', (event) => {
+  if (event.key !== 'Escape' || !mobileSettings.open) return;
+  event.preventDefault();
+  closeSettings();
+});
+
+document.addEventListener('click', (event) => {
+  if (mobileSettings.open && !mobileSettings.contains(event.target)) mobileSettings.open = false;
 });
 
 for (const button of galleryButtons) {

@@ -40,6 +40,27 @@
         <span>EasyDay Apps</span>
         <span class="brand-app">Calorie Tracker</span>
       </a>
+      <details class="mobile-settings">
+        <summary class="settings-trigger" aria-label="Language and theme" data-label="siteSettings">
+          <span class="settings-language">EN</span>
+        </summary>
+        <div class="settings-panel">
+          <div class="settings-group" role="group" aria-labelledby="settings-language-label">
+            <p id="settings-language-label" data-copy="settingsLanguage">Language</p>
+            <div class="settings-options">
+              <a href="./" lang="en" hreflang="en" data-lang="en" aria-current="true">English</a>
+              <a href="?lang=ru" lang="ru" hreflang="ru" data-lang="ru">Русский</a>
+            </div>
+          </div>
+          <div class="settings-group" role="group" aria-labelledby="settings-theme-label">
+            <p id="settings-theme-label" data-copy="settingsTheme">Theme</p>
+            <div class="settings-options">
+              <button type="button" data-site-theme="light" data-copy="themeLight" aria-pressed="true">Light</button>
+              <button type="button" data-site-theme="dark" data-copy="themeDark" aria-pressed="false">Dark</button>
+            </div>
+          </div>
+        </div>
+      </details>
       <nav class="main-nav" aria-label="Main navigation" data-label="navigation">
         <a href="#features" data-copy="navFeatures">Features</a>
         <a href="#app" data-copy="navApp">Demo</a>
