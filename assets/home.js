@@ -125,6 +125,7 @@ const galleryDots = galleryButtons.map((button) => {
 });
 galleryPagination.append(...galleryDots);
 const galleryImage = document.getElementById('gallery-image');
+const galleryPreview = galleryImage.parentElement;
 const galleryCaption = document.getElementById('gallery-caption');
 const showcaseImages = document.querySelectorAll('[data-screen]:not(#gallery-image)');
 const description = document.querySelector('meta[name="description"]');
@@ -141,7 +142,13 @@ function updateImage(image) {
   const screen = (theme === 'dark' && image.dataset.darkHeroScreen) || image.dataset.screen;
   const usesDarkSet = theme === 'dark' && image.hasAttribute('data-theme-screen');
   const source = screenSource(screen, usesDarkSet);
-  image.toggleAttribute('data-dark-screen', usesDarkSet || screen === '07-home-dark');
+  const isDarkScreen = usesDarkSet || screen === '07-home-dark';
+  image.toggleAttribute('data-dark-screen', isDarkScreen);
+  if (image.parentElement.classList.contains('phone-preview')) {
+    const isHomeScreen = screen === '01-home-activity' || screen === '02-home-nutrition' || screen === '07-home-dark';
+    if (isHomeScreen) image.parentElement.dataset.homePreview = isDarkScreen ? 'dark' : 'light';
+    else image.parentElement.removeAttribute('data-home-preview');
+  }
   if (image.getAttribute('src') !== source) image.src = source;
   if (!image.closest('[aria-hidden="true"]')) image.alt = screens[screen][language];
 }
@@ -164,7 +171,7 @@ async function showScreen(screen, animate = false) {
   const canFade = animate && nextSource !== galleryImage.getAttribute('src')
     && !reducedMotion?.matches && galleryImage.complete && galleryImage.naturalWidth
     && typeof galleryImage.animate === 'function' && typeof galleryImage.decode === 'function';
-  let previousImage;
+  let previousPreview;
   if (canFade) {
     const nextImage = new Image();
     nextImage.src = nextSource;
@@ -172,25 +179,27 @@ async function showScreen(screen, animate = false) {
     if (request !== galleryRequest) return;
 
     if (decoded && !reducedMotion?.matches) {
-      previousImage = new Image();
-      previousImage.className = 'gallery-previous';
+      previousPreview = galleryPreview.cloneNode(false);
+      previousPreview.classList.add('gallery-previous');
+      previousPreview.setAttribute('aria-hidden', 'true');
+      const previousImage = new Image();
       previousImage.alt = '';
-      previousImage.setAttribute('aria-hidden', 'true');
       previousImage.src = galleryImage.src;
+      previousPreview.append(previousImage);
     }
   }
 
-  galleryImage.parentElement.querySelector('.gallery-previous')?.remove();
+  galleryPreview.parentElement.querySelector('.gallery-previous')?.remove();
   updateImage(galleryImage);
   galleryCaption.textContent = galleryButtons[selected].textContent;
 
-  if (previousImage) {
-    galleryImage.after(previousImage);
-    const fade = previousImage.animate([{ opacity: 1 }, { opacity: 0 }], {
+  if (previousPreview) {
+    galleryPreview.after(previousPreview);
+    const fade = previousPreview.animate([{ opacity: 1 }, { opacity: 0 }], {
       duration: 260,
       easing: 'ease-out',
     });
-    fade.onfinish = () => previousImage.remove();
+    fade.onfinish = () => previousPreview.remove();
   }
 }
 

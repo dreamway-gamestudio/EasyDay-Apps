@@ -242,13 +242,18 @@ p { line-height: 1.55; }
 }
 .phone-screen { position: relative; overflow: hidden; border-radius: 15.8% / 7.04%; }
 .phone-screen img { width: 100%; height: auto; }
-/* Match the screenshot filename so the cover stays in place during gallery fades. */
-.phone-screen img:is([src$="-01-home-activity.png"], [src$="-02-home-nutrition.png"]) {
-  filter: url(#home-screen-light);
+.phone-preview { position: relative; }
+.phone-preview[data-home-preview]::after {
+  content: "";
+  position: absolute;
+  left: 52%;
+  top: 6.2%;
+  width: 18.5%;
+  height: 5.4%;
+  background: #f3f4f3;
+  pointer-events: none;
 }
-.phone-screen img:is([src$="-dark-01-home-activity.png"], [src$="-dark-02-home-nutrition.png"], [src$="-07-home-dark.png"]) {
-  filter: url(#home-screen-dark);
-}
+.phone-preview[data-home-preview="dark"]::after { background: #181920; }
 .phone-screen::after {
   content: "";
   position: absolute;
