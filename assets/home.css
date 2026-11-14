@@ -242,6 +242,13 @@ p { line-height: 1.55; }
 }
 .phone-screen { position: relative; overflow: hidden; border-radius: 15.8% / 7.04%; }
 .phone-screen img { width: 100%; height: auto; }
+/* Match the screenshot filename so the cover stays in place during gallery fades. */
+.phone-screen img:is([src$="-01-home-activity.png"], [src$="-02-home-nutrition.png"]) {
+  filter: url(#home-screen-light);
+}
+.phone-screen img:is([src$="-dark-01-home-activity.png"], [src$="-dark-02-home-nutrition.png"], [src$="-07-home-dark.png"]) {
+  filter: url(#home-screen-dark);
+}
 .phone-screen::after {
   content: "";
   position: absolute;
