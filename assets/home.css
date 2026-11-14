@@ -574,7 +574,7 @@ a.feature-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px #4a55
 .site-footer { border-top: 1px solid #e2e3d9; }
 .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 28px; min-height: 112px; padding-block: 20px calc(20px + env(safe-area-inset-bottom, 0px)); }
 .footer-inner p { margin: 5px 0 0; font-size: .75rem; color: var(--muted); }
-.footer-links { display: flex; flex-wrap: wrap; gap: 10px 20px; font-size: .83rem; font-weight: 650; }
+.footer-links { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; font-size: .83rem; font-weight: 650; }
 
 @media (max-width: 1120px) {
   :root { --wrap: calc(100% - 60px); }
@@ -599,7 +599,6 @@ a.feature-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px #4a55
   .mobile-settings { display: block; position: relative; flex: none; }
   .home-header :is(.main-nav, .header-actions) { display: none; }
   .footer-inner { flex-direction: column; align-items: flex-start; gap: 15px; }
-  .footer-links { flex-direction: column; align-items: flex-start; }
 }
 
 @media (max-width: 880px) {
