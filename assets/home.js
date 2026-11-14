@@ -11,6 +11,8 @@ const russianCopy = {
   themeLight: 'Светлая',
   themeDark: 'Тёмная',
   gallery: 'Скриншоты приложения',
+  galleryPrevious: 'Предыдущий скриншот',
+  galleryNext: 'Следующий скриншот',
   footer: 'Поддержка и документы',
   navFeatures: 'Функции',
   navApp: 'Демо',
@@ -270,6 +272,14 @@ document.addEventListener('click', (event) => {
 
 for (const button of galleryButtons) {
   button.addEventListener('click', () => showScreen(button.dataset.gallery, true));
+}
+
+for (const arrow of document.querySelectorAll('[data-gallery-step]')) {
+  arrow.addEventListener('click', () => {
+    const current = galleryButtons.findIndex(button => button.dataset.gallery === galleryImage.dataset.screen);
+    const next = (current + Number(arrow.dataset.galleryStep) + galleryButtons.length) % galleryButtons.length;
+    showScreen(galleryButtons[next].dataset.gallery, true);
+  });
 }
 
 for (const link of document.querySelectorAll('[data-gallery-link]')) {
