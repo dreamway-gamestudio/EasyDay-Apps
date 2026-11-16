@@ -569,6 +569,9 @@ a.feature-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px #4a55
 
 .download-panel { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 22px; padding: 28px 30px; border-radius: 24px; background: #ebf3d4; }
 .download-logo { object-fit: contain; border-radius: 22%; }
+.download-logo-dark { display: none; }
+:root[data-theme="dark"] .download-logo-light { display: none; }
+:root[data-theme="dark"] .download-logo-dark { display: block; }
 .download-copy h2 { font-size: clamp(2rem, 4vw, 3rem); }
 .download-copy p { margin-top: 6px; color: #404934; font-size: .92rem; }
 .site-footer { border-top: 1px solid #e2e3d9; }
