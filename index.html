@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <script src="assets/theme.js"></script>
-  <link rel="stylesheet" href="assets/home.css?v=7">
+  <link rel="stylesheet" href="assets/home.css?v=8">
   <link rel="stylesheet" href="assets/dark.css">
   <script src="assets/home.js?v=3" defer></script>
 </head>
@@ -96,7 +96,11 @@
     <section class="hero" id="top" aria-labelledby="hero-title">
       <div class="wrap hero-grid">
         <div class="hero-copy">
-          <p class="hero-label">Healta</p>
+          <p class="hero-label">
+            <img class="healta-icon healta-icon-light" src="assets/healta-leaf-light-green.png" width="20" height="20" alt="">
+            <img class="healta-icon healta-icon-dark" src="assets/healta-leaf-dark-gradient.png" width="20" height="20" alt="">
+            Healta
+          </p>
           <h1 id="hero-title"><span data-copy="heroTitle">Healthy habits,</span> <span class="underline" data-copy="heroAccent">every day.</span></h1>
           <p class="hero-description" data-copy="heroDescription">Calories, meals, activity, and progress in one app.</p>
           <div class="actions">
@@ -274,7 +278,11 @@
     <section class="wrap section app-section" id="app" aria-labelledby="app-title">
       <div class="app-panel">
         <div class="app-copy">
-          <h2 id="app-title" data-copy="appTitle">Explore Healta</h2>
+          <h2 id="app-title" class="app-heading">
+            <img class="healta-icon healta-icon-light" src="assets/healta-leaf-light-green.png" width="48" height="48" alt="">
+            <img class="healta-icon healta-icon-dark" src="assets/healta-leaf-dark-gradient.png" width="48" height="48" alt="">
+            <span data-copy="appTitle">Explore Healta</span>
+          </h2>
           <p data-copy="appDescription">Choose a screen to see how the app looks in everyday use.</p>
           <div class="gallery-options" role="group" aria-label="App screenshots" data-label="gallery">
             <button type="button" data-gallery="01-home-activity" aria-pressed="true" data-copy="screenActivity">Activity</button>
@@ -316,8 +324,8 @@
 
     <section class="wrap section download-section" id="download" aria-labelledby="download-title">
       <div class="download-panel">
-        <img class="download-logo download-logo-light" src="assets/healta-leaf-light-green.png" width="62" height="62" alt="">
-        <img class="download-logo download-logo-dark" src="assets/healta-leaf-dark-gradient.png" width="62" height="62" alt="">
+        <img class="download-logo healta-icon healta-icon-light" src="assets/healta-leaf-light-green.png" width="62" height="62" alt="">
+        <img class="download-logo healta-icon healta-icon-dark" src="assets/healta-leaf-dark-gradient.png" width="62" height="62" alt="">
         <div class="download-copy">
           <h2 id="download-title">Healta</h2>
           <p data-copy="downloadTitle">Start building healthier habits</p>
