@@ -203,8 +203,31 @@ async function showScreen(screen, animate = false) {
   }
 }
 
+function readLanguage() {
+  const requested = new URLSearchParams(window.location.search).get('lang');
+  if (requested === 'ru' || requested === 'en') return requested;
+
+  try {
+    const saved = localStorage.getItem('easyday-language');
+    if (saved === 'ru' || saved === 'en') return saved;
+  } catch {
+    // Browser preferences remain available when storage is blocked.
+  }
+
+  for (const locale of navigator.languages?.length ? navigator.languages : [navigator.language]) {
+    const preferred = locale?.toLowerCase().split('-')[0];
+    if (preferred === 'ru' || preferred === 'en') return preferred;
+  }
+  return 'en';
+}
+
 function updatePage() {
-  language = new URLSearchParams(window.location.search).get('lang') === 'ru' ? 'ru' : 'en';
+  language = readLanguage();
+  const pageUrl = new URL(window.location.href);
+  if (pageUrl.searchParams.get('lang') !== language) {
+    pageUrl.searchParams.set('lang', language);
+    history.replaceState(null, '', pageUrl.href);
+  }
   theme = siteTheme.read();
   siteTheme.apply(theme);
   document.documentElement.lang = language;
@@ -228,8 +251,7 @@ function updatePage() {
 
   for (const link of languageLinks) {
     const url = new URL(window.location.href);
-    if (link.dataset.lang === 'ru') url.searchParams.set('lang', 'ru');
-    else url.searchParams.delete('lang');
+    url.searchParams.set('lang', link.dataset.lang);
     link.href = url.href;
 
     if (link.dataset.lang === language) {
@@ -255,6 +277,11 @@ for (const link of languageLinks) {
     if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     event.preventDefault();
     closeSettings();
+    try {
+      localStorage.setItem('easyday-language', link.dataset.lang);
+    } catch {
+      // The URL carries the manual choice when storage is blocked.
+    }
     if (link.dataset.lang === language) return;
     history.pushState(null, '', link.href);
     updatePage();
